@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    home page
+    <!-- for loop for posts in post collection to show album info, links to show page -->
+    <button type="button"><a href="#"> Show old post</a></button>
+    <% for(let i = 0; i < post.length; i++) { %>
+        <li>
+         <%=post[i].album%> by <%=post[i].artist%>
+        </li> 
+    <%}%>
+    <!-- nav bar -->
+    <button type="button"><a href="#"> Profile</a></button>
+    <button type="button"><a href="/myMusic/new"> Create New Post</a></button>
+    <button type="button"><a href="#"> Playlists</a></button>
+    <button type="button"><a href="#"> Random music</a></button>
+
+    
+
+
+</body>
+</html>
