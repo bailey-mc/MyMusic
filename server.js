@@ -6,7 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 const methodOverride = require('method-override');
-const PostSeed = require('./models/postseed.js');  //for seed
+// const PostSeed = require('./models/postseed.js');  //for seed
 const Post = require('./models/postschema.js') //  for seed
 
 
@@ -52,7 +52,16 @@ client.connect(err => {
 //     }
 //     )
 // })
-
+app.get('/', (req, res)=>{
+	Post.find({}, (err, allPosts)=> {
+        res.render('index.ejs',
+            {
+                post: allPosts
+            }
+        );
+    })
+    
+})
 
 // error/success
 db.on('error', (err) => console.log(err.message));
