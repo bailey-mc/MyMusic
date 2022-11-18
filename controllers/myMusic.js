@@ -50,6 +50,15 @@ router.post('/', (req, res)=> {
 
 
 //-------------EDIT---------------//
+router.get('/:id/edit', (req,res)=> {
+    Post.findById(req.params.id, (err, foundMusic)=> {
+        res.render('edit.ejs',
+            {
+                music: foundMusic
+            }
+        )
+    })
+})
 
 
 //-------------PUT---------------//
