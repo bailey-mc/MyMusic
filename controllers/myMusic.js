@@ -62,6 +62,11 @@ router.get('/:id/edit', (req,res)=> {
 
 
 //-------------PUT---------------//
+router.put('/:id/', (req, res)=> {
+    Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMusic)=> {
+        res.redirect('/myMusic')
+    })
+})
 
 //-------------DELETE---------------//
 

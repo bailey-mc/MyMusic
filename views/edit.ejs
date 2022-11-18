@@ -8,5 +8,11 @@
 </head>
 <body>
     <%=music.album%>
+    <form action="/myMusic/<%=music._id%>%>?_method=PUT" method="POST">
+        <input type="text" name="album" value="<%=music.album%>"/> <br/>
+        <input type="text" name="artist" value="<%=music.artist%>"/> <br/>
+        <input type="submit" value="Edit Post"/>
+
+    </form>
 </body>
 </html>
