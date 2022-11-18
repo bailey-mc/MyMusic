@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css"> 
+
     <title>Document</title>
 </head>
 <body>
-    <%=music.album%> by <%=music.artist%>
-    <button><a href="/myMusic/<%=music._id%>/edit">edit review</a></button>
-    <form action="/myMusic/<%=music._id%>?_method=DELETE" method="POST">
-        <input class="delete" type="submit" value="Delete Post" />
-    </form>
+    <div class="container">
+        <h1><%=music.album%> by <%=music.artist%></h1>
+        <!-- link -->
+        <p>Rating: <%=music.rating%></p><br/>
+        <p>Review: <%=music.review%></p><br/>
+        <p>Tags: <%=music.tags%></p><br/>
+
+        <button><a href="/myMusic/<%=music._id%>/edit">edit review</a></button>
+        <form action="/myMusic/<%=music._id%>?_method=DELETE" method="POST">
+            <input class="delete" type="submit" value="Delete Post" />
+        </form>
+        <button><a href="/myMusic">Return To Home</a></button>
+    </div>
+    
 </body>
 </html>

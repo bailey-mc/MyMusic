@@ -7,10 +7,10 @@ const mongoose = require('mongoose')
 //              SCHEMA           //
 //---------------------------------//
 const postSchema = new mongoose.Schema({
-    album: {type:String, unique:true},
+    album: {type:String, required:true ,unique:true},
     artist: String,
     link: String,
-    rating: Number,
+    rating: {type: Number, min:0, max:10},
     review: String,
     tags: [String], 
 

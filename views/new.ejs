@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css"> 
+
     <title>Document</title>
 </head>
 <body>
     <h1>New Item</h1>
         <h3>time to review!</h3>
         <form action="/myMusic" method="POST">
-            <input type="text" name="album" placeholder="album name"/> <br/>
-            <input type="text" name="artist" placeholder="artist"/> <br/>
+            <input type="text" name="album" value="album" placeholder="album name"/> <br/>
+            <input type="text" name="artist" value="artist" placeholder="artist name"/> <br/>
+            <input type="text" name="youtube link" value="link" placeholder="youtube link"/> <br/>
+            <input type="number" min="0" max="10" name="rating" value="rating" placeholder="rating 0-10"/> <br/>
+            <input type="text" 
             
-
-            <input type="submit" name="done" value="create post"/>
+            class="review"
+            name="review" value="review" placeholder="review"/> <br/>
+            <input type="text" name="tags" value="tags" placeholder="tags"/> <br/>
+            <input type="submit" name="Create Post" value="Create Post"/>
+          </form>
+            
+few
+          
            
 </body>
 </html>
