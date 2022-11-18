@@ -9,5 +9,8 @@
 <body>
     <%=music.album%> by <%=music.artist%>
     <button><a href="/myMusic/<%=music._id%>/edit">edit review</a></button>
+    <form action="/myMusic/<%=music._id%>?_method=DELETE" method="POST">
+        <input class="delete" type="submit" value="Delete Post" />
+    </form>
 </body>
 </html>

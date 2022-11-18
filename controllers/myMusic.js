@@ -69,7 +69,11 @@ router.put('/:id/', (req, res)=> {
 })
 
 //-------------DELETE---------------//
-
+router.delete('/:id', (req, res)=> {
+    Post.findByIdAndRemove(req.params.id, (err, deletedMusic)=> {
+        res.redirect('/myMusic')
+    })
+})
 
 //-------------------------------//
 //              EXPORTS           //
