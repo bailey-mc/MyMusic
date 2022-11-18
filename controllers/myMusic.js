@@ -32,15 +32,11 @@ router.get('/', (req, res)=>{
 //-------------SHOW---------------//
 router.get('/:id', (req,res)=> {
     Post.findById(req.params.id,  (err, foundMusic)=> {
-        ///updating yt link so that it is JUST the unique number, can then be put into the embed link already set up on show page... cut out everything BEFORE = and after (including) &
-        //Removes & and everything following
-        let link =foundMusic.link.split('&')[0]
-        //Removes = and everythiing before // tutorial from https://thispointer.com/javascript-string-remove-until-a-character/
-        link = link.substring(link.indexOf('=') + 1)
+   
         res.render('show.ejs',
         {
             music : foundMusic,
-            link : link
+            
         }
         )
     })

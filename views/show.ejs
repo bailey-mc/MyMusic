@@ -12,13 +12,26 @@
     <div class="container">
         <h1><%=music.album%> by <%=music.artist%></h1>
         <!-- link -->
-        <iframe width="560" height="315" 
+        <!-- ///updating yt link so that it is JUST the unique number, can then be put into the embed link already set up on show page... cut out everything BEFORE = and after (including) & -->
+        <%if (music.link !== null) {
+        //Removes & and everything following
+
+            let link =music.link.split('&')[0]
+                //Removes = and everythiing before // tutorial from https://thispointer.com/javascript-string-remove-until-a-character/
+                link = link.substring(link.indexOf('=') + 1) %>
+                <iframe width="560" height="315" 
 
         src="https://www.youtube.com/embed/<%=link%>" 
       
 
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p>link: <%=link%> </p>
+         <% } else { %>
+            <p>Broken link</p>
+          <%}%>
+
+
+        
         <p>Rating: <%=music.rating%></p><br/>
         <p>Review: <%=music.review%></p><br/>
         <p>Tags: <%=music.tags%></p><br/>
