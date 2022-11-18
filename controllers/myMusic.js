@@ -30,6 +30,15 @@ router.get('/', (req, res)=>{
 
 
 //-------------SHOW---------------//
+router.get('/:id', (req,res)=> {
+    Post.findById(req.params.id,  (err, foundMusic)=> {
+        res.render('show.ejs',
+        {
+            music : foundMusic
+        }
+        )
+    })
+})
 
 
 //-------------POST---------------//

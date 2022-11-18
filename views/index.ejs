@@ -12,7 +12,7 @@
     <button type="button"><a href="#"> Show old post</a></button>
     <% for(let i = 0; i < post.length; i++) { %>
         <li>
-         <%=post[i].album%> by <%=post[i].artist%>
+         <a href="/mymusic/<%=post[i]._id%>"><%=post[i].album%> by <%=post[i].artist%></a>
         </li> 
     <%}%>
     <!-- nav bar -->

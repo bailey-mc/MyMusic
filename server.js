@@ -52,6 +52,8 @@ client.connect(err => {
 //     }
 //     )
 // })
+
+//for heroku deployment
 app.get('/', (req, res)=>{
 	Post.find({}, (err, allPosts)=> {
         res.render('index.ejs',
