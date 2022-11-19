@@ -15,10 +15,19 @@
         <!-- for loop for posts in post collection to show album info, links to show page -->
         
         <% for(let i = 0; i < post.length; i++) { %>
-            <li>
-             <a href="/mymusic/<%=post[i]._id%>"><%=post[i].album%> by <%=post[i].artist%></a>
-            </li> 
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="<%=post[i].image%>" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text"><a href="/mymusic/<%=post[i]._id%>"><%=post[i].album%> by <%=post[i].artist%></a>
+                  </li> </p>
+                  
+                </div>
+              </div>
+    
         <%}%>
+
+        
+
         <!-- nav bar -->
         <button type="button"><a href="#"> Profile</a></button>
         <button type="button"><a href="/myMusic/new"> Create New Post</a></button>

@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const postSchema = new mongoose.Schema({
     album: {type:String, required:true ,unique:true},
     artist: String,
+    image: String,
     link: String,
     rating: {type: Number, min:0, max:10},
     review: String,
