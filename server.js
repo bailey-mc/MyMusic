@@ -80,13 +80,7 @@ app.use('/myMusic', myMusicController);
 
 //for heroku deployment
 app.get('/', (req, res)=>{
-	Post.find({}, (err, allPosts)=> {
-        res.render('index.ejs',
-            {
-                post: allPosts
-            }
-        );
-    })
+	res.render('landing.ejs')
     
 })
 
