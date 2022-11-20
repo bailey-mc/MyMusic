@@ -77,8 +77,26 @@ router.put('/:id/', (req, res)=> {
 //-------------search---------------//
 router.post('/search', (req, res)=> {
     console.log(req.body.searchTerm);
-    Post.find({artist: req.body.searchTerm}, (err, foundPost)=> {
-        res.send(foundPost)
+    Post.find({$or: [
+        {
+            artist: req.body.searchTerm
+        },
+        {
+            album: req.body.searchTerm
+        },
+        {
+            tags: req.body.searchTerm
+        },
+
+    ]
+        
+    }, 
+    (err, foundPosts)=> {
+        res.render('search.ejs',
+            {
+                post: foundPosts
+            }
+        )
     })
 })
 
