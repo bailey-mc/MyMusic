@@ -94,7 +94,19 @@ sessions.get('/', (req, res)=> {
      })
  })
 
+
+ //error message for page that does not exist
+sessions.use((req,res, next)=> {
+    res.send('404 page not found')
+})
+
  //-------------------------------//
 //              EXPORTS           //
 //-------------------------------//
  module.exports = sessions
+
+
+ //-----------------------------//
+ //         Citations          //
+ //-----------------------------//
+ //major major help from the full stack junkie on youtube, this video in particular: https://www.youtube.com/watch?v=TDe7DRYK8vU&ab_channel=TheFullStackJunkie

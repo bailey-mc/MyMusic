@@ -84,6 +84,11 @@ app.get('/', (req, res)=>{
     
 })
 
+//error message for page that does not exist
+app.use((req,res, next)=> {
+    res.send('404 page not found')
+})
+
 // error/success
 db.on('error', (err) => console.log(err.message));
 db.on('connected', () => console.log('mongo connected: ', uri));

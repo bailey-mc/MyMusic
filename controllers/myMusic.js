@@ -2,9 +2,13 @@
 //          DEPENDENCEIS        //
 //-------------------------------//
 const express = require('express');
+// const { aggregate } = require('../models/postschema.js');
 const router = express.Router();
-const Post = require('../models/postschema.js')
+const Post = require('../models/postschema.js');
+
+// const Agg = require('../search_blog_posts.js')
 // require schema 
+
 
 
 //-------------------------------//
@@ -70,12 +74,26 @@ router.put('/:id/', (req, res)=> {
     })
 })
 
+//-------------search---------------//
+router.post('/search', (req, res)=> {
+    console.log(req.body.searchTerm);
+    Post.find({artist: req.body.searchTerm}, (err, foundPost)=> {
+        res.send(foundPost)
+    })
+})
+
 //-------------DELETE---------------//
 router.delete('/:id', (req, res)=> {
     Post.findByIdAndRemove(req.params.id, (err, deletedMusic)=> {
         res.redirect('/myMusic')
     })
 })
+
+//how to  make work for myMusic/foo
+//error message for page that does not exist
+// router.use((req,res, next)=> {
+//     res.send('404 page not found')
+// })
 
 //-------------------------------//
 //              EXPORTS           //
