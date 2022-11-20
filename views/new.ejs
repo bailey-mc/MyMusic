@@ -11,64 +11,89 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         
-        myMusic
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <form class="form-inline my-2 my-lg-0" action="sessions/logout" method="POST">
-            <button class="btn btn-outline-success my-2 my-sm-0">Logout</button>
-        </form>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a class="navbar-brand" href="#">myMusic</a>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="/myMusic">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/myMusic">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile
+              <a class="nav-link" href="#">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/myMusic/new">Create New Post
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Random Song
-              </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Playlists
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Playlist 1</a>
-                <a class="dropdown-item" href="#">Playlist 2</a>
-                
-              </div>
+              <a class="nav-link " href="/myMusic/new">New Post</a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link " href="#">Random Song</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Playlists
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Playlist 1</a>
+                  <a class="dropdown-item" href="#">Playlist 2</a>
+                  
+                </div>
+              </li>
           </ul>
           <form class="form-inline my-2 my-lg-0" action="/myMusic/search" method="POST">
             <input class="form-control mr-sm-2" type="text" name="searchTerm" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            
           </form>
+          <form class="form-inline my-2 my-lg-0" action="sessions/logout" method="POST">
+            <button class="btn btn-outline-success my-2 my-sm-0">Logout</button>
+        </form>
           
         </div>
       </nav>
       <div class="container">
-        <h1>New Item</h1>
-        <h3>time to review!</h3>
-        <form action="/myMusic" method="POST">
-            <input type="text" name="album" value="album" placeholder="album name"/> <br/>
-            <input type="text" name="artist" value="artist" placeholder="artist name"/> <br/>
-            <input type="text" name="image" value="image" placeholder="album cover"/> <br/>
-
-            <input type="text" name="link" value="link" placeholder="youtube link"/> <br/>
-            <input type="number" min="0" max="10" name="rating" value="rating" placeholder="rating 0-10"/> <br/>
-            <input type="text" 
-            
-            class="review"
-            name="review" value="review" placeholder="review"/> <br/>
-            <input type="text" name="tags" value="tags" placeholder="tags"/> <br/>
-            <input type="submit" name="Create Post" value="Create Post"/>
+        <h1>time to review!</h1>
+          <form action="/myMusic" method="POST">
+            <div class="form-group" >
+              <label for="FormControlInput1">Album</label>
+              <input type="text" class="form-control" id="FormControlInput1" placeholder="album name" name="album" value="album">
+            </div>
+            <div class="form-group">
+                <label for="FormControlInput2">Artist</label>
+                <input type="text" class="form-control" id="FormControlInput2" placeholder="artist name" name="artist" value="artist">
+              </div>
+            <div class="form-group">
+                <label for="FormControlInput3">Album Cover</label>
+                <input type="text" class="form-control" id="FormControlInput3" name="image" value="image" placeholder="album cover">
+                </div>
+            <div class="form-group">
+                <label for="FormControlInput4">Youtube Link</label>
+                <input type="text" class="form-control" id="FormControlInput4" name="link" value="link" placeholder="youtube.com/alex_g">
+                </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Rating</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="rating">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+              </select>
+            </div>
+            <div class="form-group">Review</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="review" value="review"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="FormControlInput5">Tags</label>
+                <input type="text" class="form-control" id="FormControlInput5" name="tags" value="tags" placeholder="jazz, funk, world">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Post</button>
+             
           </form>
       </div>
     
