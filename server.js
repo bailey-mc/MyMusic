@@ -2,6 +2,9 @@
 //          DEPENDENCIES      //
 //-----------------------------//
 const express = require('express');
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+const MongoBDSession = require('connect-mongodb-session')(session);
 const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
@@ -11,28 +14,11 @@ const Post = require('./models/postschema.js') //  for seed
 
 
 
+
+
 //-----------------------------//
-//         CONFIGURATION      //
+//        MONGO CONFIG    //
 //-----------------------------//
-app.use(methodOverride('_method'));
-let PORT = 3000;
-if(process.env.PORT){
-	PORT = process.env.PORT
-}
-
-// body parser
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-
-// static
-app.use(express.static('public'));
-
-//controller
-const myMusicController = require('./controllers/myMusic.js');
-// const { post } = require('./controllers/myMusic.js');
-app.use('/myMusic', myMusicController);
-
-//MONGO
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://musiclover:bobdylaN%2196@mymusic.wef1hdo.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -41,6 +27,45 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });
+const store = new MongoBDSession({
+    uri: uri,
+    collection: 'mySessions',
+})
+
+
+//-----------------------------//
+//         CONFIGURATION      //
+//-----------------------------//
+app.set('view engine', 'ejs')
+app.use(methodOverride('_method'));
+let PORT = 3000;
+if(process.env.PORT){
+	PORT = process.env.PORT
+}
+
+
+app.use(express.urlencoded
+    ({extended: true}));
+
+app.use(session({
+    secret: 'key that will sign cookie',
+    resave: false,
+    saveUninitialized: false,
+    store: store
+    }))
+
+app.use(express.json());
+
+// static //public files
+app.use(express.static('public'));
+
+//controller
+const sessionsController = require('./controllers/sessions_controller')
+app.use('/sessions', sessionsController)
+const myMusicController = require('./controllers/myMusic.js');
+// const { post } = require('./controllers/myMusic.js');
+app.use('/myMusic', myMusicController);
+
 
 
 
