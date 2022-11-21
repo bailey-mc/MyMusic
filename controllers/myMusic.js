@@ -92,7 +92,7 @@ router.post('/search', (req, res)=> {
         
     }, 
     (err, foundPosts)=> {
-        res.render('search.ejs',
+        res.redirect('search.ejs',
             {
                 post: foundPosts
             }

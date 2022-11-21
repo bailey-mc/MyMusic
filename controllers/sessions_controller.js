@@ -4,6 +4,7 @@
 const express = require('express');
 const sessions = express.Router();
 const bcrypt = require('bcrypt');
+const Post = require('../models/postschema.js');
 
 
 
@@ -24,7 +25,7 @@ const isAuth = (req, res, next) => {
 
 //-----------ROUTES------------//
 sessions.get('/', (req, res)=> {
-    res.render('landing.ejs')
+        res.render('landing.ejs',);
  })
  
  sessions.get('/login', (req, res)=> {
