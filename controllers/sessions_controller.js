@@ -24,7 +24,7 @@ const isAuth = (req, res, next) => {
 
 //-----------ROUTES------------//
 sessions.get('/', (req, res)=> {
-        res.render('landing.',);
+        res.render('landing',);
  })
  
  sessions.get('/login', (req, res)=> {
@@ -60,6 +60,7 @@ sessions.get('/', (req, res)=> {
  
  sessions.post('/register', async (req, res)=> {
      const {username, password} = req.body
+     console.log(req.body);
  
      //to make sure two accounts don't register with the same username
      let user = await UserModel.findOne({username})
