@@ -74,3 +74,8 @@ html{
  .new-page {
     background-image: none;
  }
+
+ .authors{
+  list-style-type: none;
+  color:black
+ }

@@ -21,7 +21,7 @@
               <a class="nav-link" href="/myMusic">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <a class="nav-link" href="#">Authors</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/myMusic/new">New Post</a>
@@ -54,6 +54,7 @@
     <div class="container">
        
         <h1><%=music.album%> by <%=music.artist%></h1>
+         <small>Reviewedby: <a href="/authors/<%=author._id%>"><%=author.name%></a></small><br/>
         <!-- link -->
         <!-- ///updating yt link so that it is JUST the unique number, can then be put into the embed link already set up on show page... cut out everything BEFORE = and after (including) & -->
         <%if (music.link !== null) {

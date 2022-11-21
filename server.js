@@ -59,14 +59,15 @@ app.use(express.json());
 // static //public files
 app.use(express.static('public'));
 
-//controller
+//-----------------------------//
+//        CONTROLLERS    //
+//-----------------------------//
 const sessionsController = require('./controllers/sessions_controller')
 app.use('/sessions', sessionsController)
 const myMusicController = require('./controllers/myMusic.js');
-// const { post } = require('./controllers/myMusic.js');
 app.use('/myMusic', myMusicController);
-// const profileController = require('./controllers/profile_controller');
-// app.use('/profile', profileController);
+const authorsController = require('./controllers/authors.js');
+app.use('/authors', authorsController);
 
 
 

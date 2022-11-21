@@ -21,7 +21,7 @@
               <a class="nav-link" href="/myMusic">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <a class="nav-link" href="#">Authors</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/myMusic/new">New Post</a>
@@ -54,6 +54,14 @@
       <div class="container">
         <h1>time to review!</h1>
           <form action="/myMusic" method="POST">
+
+            <select name="authorId">
+              <% for(let i = 0; i < authors.length; i++) { %>
+                <option value="<%=authors[i]._id%>"><%=authors[i].name%></option>
+              <% } %>
+            </select><br/>
+
+
             <div class="form-group" >
               <label for="FormControlInput1">Album</label>
               <input type="text" class="form-control" id="FormControlInput1" placeholder="album name" name="album" >
