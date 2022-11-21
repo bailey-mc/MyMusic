@@ -38,35 +38,36 @@
           
         </div>
       </nav>
-
-    <header>
+      <div class="container">
         <h1><%=author.name%></h1>
         
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h4>About</h4>
-            <p><%=author.bio%></p>
-        </section>
-        <section>
-            <h2>Articles:</h2>
-            <ul>
-                <% for(let i = 0; i < author.articles.length; i++){ %>
-                    <li class="authors"><a class="authors" href="/articles/<%=author.articles[i]._id%>"><%=author.articles[i].album%></a></li>
-                <% } %>
-            </ul>
-        </section>
-        
-        <section>
-            <form action="/authors/<%=author._id%>?_method=DELETE" method="post">
-                <input type="submit" value="Delete Author"/>
-            </form>
-        </section>
-        <section>
-            <a href="/authors/<%=author._id%>/edit">Edit</a>
-        </section>
-    </main>
+   
+        <main>
+            <section>
+                <h4>About</h4>
+                <p><%=author.bio%></p>
+            </section>
+            <section>
+                <h2>Articles:</h2>
+                <ul>
+                    <% for(let i = 0; i < author.articles.length; i++){ %>
+                        <li class="authors"><a class="authors" href="/myMusic/<%=author.articles[i]._id%>"><%=author.articles[i].album%></a></li>
+                    <% } %>
+                </ul>
+            </section>
+            
+            <section>
+                <form action="/authors/<%=author._id%>?_method=DELETE" method="post">
+                  <button type="submit" class="btn btn-light">Delete Author</button>
+                </form>
+            </section>
+            <section>
+              <button type="submit" class="btn btn-light"><a href="/authors/<%=author._id%>/edit">Edit Author</a></button>
+            </section>
+        </main>
+      </div>
+  
+       
 
 
      <!-- BOOTSTRAP -->
