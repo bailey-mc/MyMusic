@@ -16,9 +16,10 @@ const User = require('../models/user.js');
 
 
 //-------------PROFILE/INDEX---------------//
-profile.get('/', (req, res)=> {
-    res.render('profile.ejs')
-})
+// profile.get('/:id', (req, res)=> {
+//    User.find({username: })
+    
+// })
 
 //-------------EDIT---------------//
 

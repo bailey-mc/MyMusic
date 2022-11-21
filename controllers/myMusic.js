@@ -5,7 +5,7 @@ const express = require('express');
 // const { aggregate } = require('../models/postschema.js');
 const router = express.Router();
 const Post = require('../models/postschema.js');
-
+// const UserModel = require('../models/user.js')
 
 
 
@@ -91,7 +91,7 @@ router.post('/search', (req, res)=> {
         
     }, 
     (err, foundPosts)=> {
-        res.redirect('search.ejs',
+        res.render('search.ejs',
             {
                 post: foundPosts
             }

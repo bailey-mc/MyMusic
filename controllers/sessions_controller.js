@@ -47,9 +47,9 @@ sessions.get('/', (req, res)=> {
      if(!isMatch){
          return res.redirect('./login')
      }
- 
+     
      req.session.isAuth = true
-     res.redirect('../myMusic')
+     res.redirect('../myMusic',)
  })
  
  
@@ -83,7 +83,7 @@ sessions.get('/', (req, res)=> {
 
  
  sessions.get('../myMusic', isAuth, (req, res)=> {
-     res.render('../myMusic')
+     res.render('../myMusic',)
  })
  
  //package to logout
