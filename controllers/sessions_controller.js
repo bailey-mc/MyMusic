@@ -4,7 +4,6 @@
 const express = require('express');
 const sessions = express.Router();
 const bcrypt = require('bcrypt');
-const Post = require('../models/postschema.js');
 
 
 
@@ -25,7 +24,7 @@ const isAuth = (req, res, next) => {
 
 //-----------ROUTES------------//
 sessions.get('/', (req, res)=> {
-        res.render('landing.ejs',);
+        res.render('landing.',);
  })
  
  sessions.get('/login', (req, res)=> {
@@ -39,14 +38,14 @@ sessions.get('/', (req, res)=> {
      const user = await UserModel.findOne({username})
  
      if(!user) {
-         return res.redirect('sessions/login')
+         return res.redirect('./login')
      }
  
      //compare passwords
      const isMatch = await bcrypt.compare(password, user.password)
  
      if(!isMatch){
-         return res.redirect('sessions/login')
+         return res.redirect('./login')
      }
  
      req.session.isAuth = true
@@ -79,7 +78,7 @@ sessions.get('/', (req, res)=> {
      await user.save()
      //mongoose method that saves the user that has been created into the database
  
-     res.redirect('/login')
+     res.redirect('./login')
  })
  
  sessions.get('../myMusic', isAuth, (req, res)=> {
