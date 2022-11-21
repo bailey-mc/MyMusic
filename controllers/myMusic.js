@@ -76,15 +76,17 @@ router.put('/:id/', (req, res)=> {
 //-------------search---------------//
 router.post('/search', (req, res)=> {
     console.log(req.body.searchTerm);
+    x =req.body.searchTerm;
+    console.log(x);
     Post.find({$or: [
         {
-            artist: req.body.searchTerm
+            artist: x            
         },
         {
-            album: req.body.searchTerm
+            album: x
         },
         {
-            tags: req.body.searchTerm
+            tags: x            
         },
 
     ]

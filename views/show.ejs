@@ -68,7 +68,7 @@
       
 
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p>link: <%=link%> </p>
+       
          <% } else { %>
             <p>Broken link</p>
           <%}%>
@@ -79,11 +79,13 @@
         <p>Review: <%=music.review%></p><br/>
         <p>Tags: <%=music.tags%></p><br/>
 
-        <button><a href="/myMusic/<%=music._id%>/edit">edit review</a></button>
+        <button class="btn btn-light"><a href="/myMusic/<%=music._id%>/edit">edit review</a></button> <br/>
         <form action="/myMusic/<%=music._id%>?_method=DELETE" method="POST">
-            <input class="delete" type="submit" value="Delete Post" />
+          <button class="btn btn-light" class="delete" type="submit">Delete Post
+            </button> <br/>
+            
         </form>
-        <button><a href="/myMusic">Return To Home</a></button>
+        <button class="btn btn-light"><a href="/myMusic">Return To Home</a></button><br/>
     </div>
     <!-- BOOTSTRAP -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
