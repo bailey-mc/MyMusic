@@ -3,8 +3,17 @@ const router = express.Router();
 const Author = require('../models/authors.js');
 const Post = require('../models/postschema.js');
 
+//prevent pplp who ar not logged in from getting to restricted pages
+const isAuth = (req, res, next) => {
+    if (req.session.isAuth) {
+        next()
+    } else {
+        res.redirect('/sessions/login')
+    }
+}
 
-router.get('/new', (req, res)=>{
+//-----------ROUTES------------//
+router.get('/new', isAuth, (req, res)=>{
 	res.render('authors/new.ejs');
 });
 
@@ -17,7 +26,7 @@ router.post('/', (req, res)=>{
 	});
 });
 
-router.get('/', (req, res)=>{
+router.get('/', isAuth, (req, res)=>{
 	Author.find({}, (err, foundAuthors)=>{
 		res.render('authors/index.ejs', {
 			authors: foundAuthors
@@ -25,7 +34,7 @@ router.get('/', (req, res)=>{
 	})
 });
 
-router.get('/:id', (req, res)=>{
+router.get('/:id', isAuth, (req, res)=>{
 	Author.findById(req.params.id, (err, foundAuthor)=>{
 		res.render('authors/show.ejs', {
 			author: foundAuthor
@@ -40,7 +49,7 @@ router.put('/:id', (req, res)=>{
 });
 
 
-router.get('/:id/edit', (req, res)=>{
+router.get('/:id/edit', isAuth, (req, res)=>{
 	Author.findById(req.params.id, (err, foundAuthor)=>{
 		res.render('authors/edit.ejs', {
 			author: foundAuthor

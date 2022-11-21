@@ -79,3 +79,7 @@ html{
   list-style-type: none;
   color:black
  }
+ .author-card{
+  max-width: 25%;
+  height: 25%;
+ }
