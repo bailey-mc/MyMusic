@@ -86,6 +86,7 @@ router.get('/:id', isAuth, (req, res)=>{
 //     })
 // })
 router.post('/', (req, res)=>{
+    req.body.tags =req.body.tags.split(',')
     Author.findById(req.body.authorId, (err, foundAuthor)=>{
         Post.create(req.body, (err, createdPost)=>{ //req.body.authorId is ignored due to Schema
             foundAuthor.articles.push(createdPost);
@@ -129,6 +130,9 @@ router.get('/:id/edit', isAuth, (req, res)=>{
 //     })
 // })
 router.put('/:id', (req, res)=>{
+   console.log(req.body);
+   req.body.tags =req.body.tags.split(',')
+
     Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPost)=>{
         Author.findOne({ 'articles._id' : req.params.id }, (err, foundAuthor)=>{
 		if(foundAuthor._id.toString() !== req.body.authorId){
@@ -157,15 +161,19 @@ router.post('/search', (req, res)=> {
     console.log(req.body.searchTerm);
     x =req.body.searchTerm;
     console.log(x);
-    Post.find({$or: [
+    Post.find(
+        {$or: [
         {
-            artist: x            
+            artist: 
+            {$regex:x, $options:'i'}          
         },
         {
-            album: x
+            album:
+            {$regex:x, $options:'i'}
         },
         {
-            tags: x            
+            tags: 
+            {$regex:x, $options:'i'}            
         },
 
     ]

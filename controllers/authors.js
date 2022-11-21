@@ -22,6 +22,8 @@ router.get('/new', isAuth, (req, res)=>{
 
 router.post('/', (req, res)=>{
 	Author.create(req.body, (err, createdAuthor)=>{
+		console.log(createdAuthor);
+		console.log(req.body);
 		res.redirect('/authors');
 	});
 });
