@@ -6,8 +6,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/postschema.js');
 
-// const Agg = require('../search_blog_posts.js')
-// require schema 
+
 
 
 
@@ -106,6 +105,8 @@ router.delete('/:id', (req, res)=> {
         res.redirect('/myMusic')
     })
 })
+
+
 
 //how to  make work for myMusic/foo
 //error message for page that does not exist

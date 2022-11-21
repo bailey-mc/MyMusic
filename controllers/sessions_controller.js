@@ -80,6 +80,7 @@ sessions.get('/', (req, res)=> {
  
      res.redirect('./login')
  })
+
  
  sessions.get('../myMusic', isAuth, (req, res)=> {
      res.render('../myMusic')

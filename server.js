@@ -65,6 +65,8 @@ app.use('/sessions', sessionsController)
 const myMusicController = require('./controllers/myMusic.js');
 // const { post } = require('./controllers/myMusic.js');
 app.use('/myMusic', myMusicController);
+const profileController = require('./controllers/profile_controller');
+app.use('/profile', profileController);
 
 
 

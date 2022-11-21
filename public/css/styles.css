@@ -71,3 +71,6 @@ html{
       rgb(243, 137, 92), #e7b8b8
     );
  }
+ .new-page {
+    background-image: none;
+ }
