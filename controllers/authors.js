@@ -25,10 +25,11 @@ router.post('/', (req, res)=>{
 	req.body.articles = [{album : req.body.name}]
 	console.log(req.body);
 	Author.create(req.body, (err, createdAuthor)=>{
+		
 		// Author.findOneAndUpdate({'name':req.body.name}, {'articles':[]}, (err, updatedAuthor)=>{
 		// 	console.log(updatedAuthor);
 			// Post.findOneAndDelete({'album':req.body.name}, (err, deletedPost)=>{
-			// 	if(err) console.log(err);
+				if(err) console.log(err);
 
 				res.redirect('/authors');
 			// })

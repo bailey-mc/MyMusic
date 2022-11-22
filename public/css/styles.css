@@ -4,6 +4,7 @@ body {
     linear-gradient(
       rgb(93, 78, 231), #c2b8e7
     );
+    height: 100vh;
 }
 .review {
     min-height: 200px;
@@ -25,7 +26,7 @@ body {
 
 html{
    
-    height: 100vh;
+    /* height: 100vh; */
   }
   body.landing{
     text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
