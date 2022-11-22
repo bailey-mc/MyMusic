@@ -26,7 +26,7 @@ body {
 
 html{
    
-    /* height: 100vh; */
+    height: 100vh;
   }
   body.landing{
     text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
