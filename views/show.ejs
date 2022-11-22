@@ -51,6 +51,32 @@
             
         </form>
         <button class="btn btn-light"><a href="/myMusic">Return To Home</a></button><br/>
+
+        <section>
+        <h4>Comments</h4>
+        <%if (music.comments.length > 0) {%>
+          <% for (let i = 0; i < music.comments.length; i++) {%>
+            <h6>User <%=music.comments[i].user%> commented:</h6>
+            <p><%=music.comments[i].comment%></p>
+          <%}%>
+        <%}%>
+        
+        
+        <div class="form-group">
+          <form action="/myMusic/<%=music._id%>/comments?_method=PUT" method="POST">
+            <div class="form-group">
+                <label for="FormControlInput2">Name</label>
+                <input type="text" class="form-control" id="FormControlInput2" placeholder="commenter name" name="user" >
+              </div>
+              <div class="form-group">
+                <label for="FormControlInput2">Comment</label>
+                <input type="text" class="form-control" id="FormControlInput2" placeholder="comment" name="comment" >
+              </div>
+              <button type="submit">submit</button>
+            </form>
+          </div>
+        
+          </section>
     </div>
 
     <!-- BOOTSTRAP -->

@@ -4,7 +4,8 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/postschema.js');
-const Author = require('../models/authors.js')
+const Author = require('../models/authors.js');
+const { setInternalBufferSize } = require('bson');
 
 
 
@@ -121,16 +122,23 @@ router.get('/:id/edit', isAuth, (req, res)=>{
 		});
 	});
 });
-
+//------COMMENTS ROUTE--------//
+router.put('/:id/comments', (req, res)=> {
+    Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMusic)=> {
+        updatedMusic.comments.push({user: req.body.user, comment: req.body.comment})
+        updatedMusic.save((err, savedUpdatedMusic)=> {
+            console.log(savedUpdatedMusic);
+        res.redirect('/myMusic/'+req.params.id)
+        })
+       
+    })
+})
 
 //-------------PUT---------------//
-// router.put('/:id/', (req, res)=> {
-//     Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMusic)=> {
-//         res.redirect('/myMusic')
-//     })
-// })
+
 router.put('/:id', (req, res)=>{
    console.log(req.body);
+   
    req.body.tags =req.body.tags.split(',')
 
     Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPost)=>{

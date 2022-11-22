@@ -13,7 +13,11 @@ const postSchema =  mongoose.Schema({
     link: String,
     rating: {type: Number, min:0, max:10},
     review: String,
-    tags: [String], 
+    tags: [String],
+    comments: [{
+        user: String,
+        comment: String
+    }, ]
 
 });
 
