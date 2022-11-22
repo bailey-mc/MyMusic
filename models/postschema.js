@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 //---------------------------------//
 //              SCHEMA           //
 //---------------------------------//
-const postSchema = new mongoose.Schema({
+const postSchema =  mongoose.Schema({
     album: {type:String, required:true ,unique:true},
     artist: String,
     image: String,

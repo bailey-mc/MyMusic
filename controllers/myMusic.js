@@ -165,15 +165,21 @@ router.post('/search', (req, res)=> {
         {$or: [
         {
             artist: 
-            {$regex:x, $options:'i'}          
+            {$regex:x, $options:'i'}
+            // {$regex:/x/i, }          
         },
         {
             album:
+            // {$regex:/x/i, }          
+
             {$regex:x, $options:'i'}
         },
         {
             tags: 
-            {$regex:x, $options:'i'}            
+            {$regex:x, $options:'i'} 
+            // {$regex:/x/i, }          
+
+                       
         },
 
     ]
