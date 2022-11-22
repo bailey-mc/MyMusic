@@ -30,14 +30,16 @@
             
                 <% for(let i = 0; i < post.length; i++) { %>
                     <div class="col-sm-6">
+                      <a href="/mymusic/<%=post[i]._id%>">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<%=post[i].image%>" alt="Card image cap">
                         <div class="card-body">
-                          <p class="card-text"><a href="/mymusic/<%=post[i]._id%>"><%=post[i].album%> by <%=post[i].artist%></a>
+                          <p class="card-text"><%=post[i].album%> by <%=post[i].artist%>
                      </p>
                           
                         </div>
                     </div>
+                  </a>
                     </div>
                 <%}%>
             

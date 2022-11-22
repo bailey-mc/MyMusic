@@ -59,8 +59,9 @@
             <h6>User <%=music.comments[i].user%> commented:</h6>
             <p><%=music.comments[i].comment%></p>
           <%}%>
+        <%}else {%>
+          <p>Be the first to comment!</p>
         <%}%>
-        
         
         <div class="form-group">
           <form action="/myMusic/<%=music._id%>/comments?_method=PUT" method="POST">
