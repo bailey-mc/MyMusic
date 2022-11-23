@@ -5,6 +5,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const MongoBDSession = require('connect-mongodb-session')(session);
+const multer = require('multer')
 const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;

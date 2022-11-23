@@ -52,12 +52,17 @@
         </form>
         <button class="btn btn-light"><a href="/myMusic">Return To Home</a></button><br/>
 
-        <section>
+        <section class="comments-container">
         <h4>Comments</h4>
+          
         <%if (music.comments.length > 0) {%>
           <% for (let i = 0; i < music.comments.length; i++) {%>
+        <div class="comments">
+
             <h6>User <%=music.comments[i].user%> commented:</h6>
             <p><%=music.comments[i].comment%></p>
+          </div>
+
           <%}%>
         <%}else {%>
           <p>Be the first to comment!</p>
