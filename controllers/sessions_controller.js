@@ -36,6 +36,7 @@ sessions.get('/', (req, res)=> {
      
      //check user exists
      const user = await UserModel.findOne({username})
+     
  
      if(!user) {
          return res.redirect('./login')
@@ -45,6 +46,7 @@ sessions.get('/', (req, res)=> {
      const isMatch = await bcrypt.compare(password, user.password)
  
      if(!isMatch){
+
          return res.redirect('./login')
      }
      
