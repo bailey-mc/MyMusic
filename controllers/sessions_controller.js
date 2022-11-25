@@ -6,7 +6,7 @@ const sessions = express.Router();
 const bcrypt = require('bcrypt');
 
 
-
+const Post = require('../models/postschema.js');
 const UserModel = require('../models/user.js')
 
 
@@ -33,7 +33,7 @@ sessions.get('/', (req, res)=> {
  
  sessions.post('/login', async (req, res)=> {
      const {username, password} = req.body; 
-     
+     console.log(req.body);
      //check user exists
      const user = await UserModel.findOne({username})
      
@@ -51,7 +51,19 @@ sessions.get('/', (req, res)=> {
      }
      
      req.session.isAuth = true
-     res.redirect('../myMusic',)
+     UserModel.findOne({username: req.body.username}, (err, foundUser)=> {
+        console.log(foundUser);
+        if (err) console.log(err);
+        Post.find({}, (err, foundPosts)=>{
+            res.render('index.ejs', {
+                post: foundPosts,
+            currentUser: foundUser
+
+            });
+        })
+       
+     })
+     
  })
  
  
