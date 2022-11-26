@@ -131,13 +131,19 @@ router.get('/:id/edit', isAuth, (req, res)=>{
 		});
 	});
 });
+
+
+// router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
+
 //------COMMENTS ROUTE--------//
-router.put('/:id/comments', (req, res)=> {
-    Post.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMusic)=> {
+router.put('/user/:userId/posts/:postId/comments', (req, res)=> {
+    console.log(req.body);
+    Post.findByIdAndUpdate(req.params.postId, req.body, {new:true}, (err, updatedMusic)=> {
+        console.log(updatedMusic);
         updatedMusic.comments.push({user: req.body.user, comment: req.body.comment})
         updatedMusic.save((err, savedUpdatedMusic)=> {
             console.log(savedUpdatedMusic);
-        res.redirect('/myMusic/'+req.params.id)
+        res.redirect('/myMusic/user/'+req.params.userId+'/posts/'+req.params.postId)
         })
        
     })
