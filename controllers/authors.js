@@ -17,8 +17,15 @@ const isAuth = (req, res, next) => {
 }
 
 //-----------ROUTES------------//
-router.get('/new', isAuth, (req, res)=>{
-	res.render('authors/new.ejs');
+router.get('/users/:userId/new', isAuth, (req, res)=>{
+	UserModel.findById(req.params.userId, (err, foundUser)=> {
+		res.render('authors/new.ejs',
+			{
+				user: foundUser
+			}
+		);
+
+	})
 });
 
 
