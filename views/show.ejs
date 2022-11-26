@@ -44,13 +44,14 @@
         <p>Review: <%=music.review%></p><br/>
         <p>Tags: <%=music.tags%></p><br/>
 
+        // edit button IF user== author
         <button class="btn btn-light"><a href="/myMusic/<%=music._id%>/edit">edit review</a></button> <br/>
-        <form action="/myMusic/<%=music._id%>?_method=DELETE" method="POST">
+
+        <form action="/myMusic/user/<%=user._id%>/posts/<%=music._id%>?_method=DELETE" method="POST">
           <button class="btn btn-light" class="delete" type="submit">Delete Post
             </button> <br/>
             
         </form>
-        <button class="btn btn-light"><a href="/myMusic">Return To Home</a></button><br/>
 
         <section class="comments-container">
         <h4>Comments</h4>

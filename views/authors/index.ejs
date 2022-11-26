@@ -27,7 +27,7 @@
             
             <% for(let i = 0; i < authors.length; i++) { %>
                 <div class="col-sm-6">
-                  <a href="/authors/<%=authors[i]._id%>">
+                  <a href="/authors/user/<%=user._id%>/author/<%=authors[i]._id%>">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="<%=authors[i].image%>" alt="Card image cap">
                     <div class="card-body">

@@ -227,7 +227,7 @@ router.post('/search', (req, res)=> {
 //         res.redirect('/myMusic')
 //     })
 // })
-router.delete('/:id', (req, res)=>{
+router.delete('/user/:userId/posts/:postId', (req, res)=>{
     Post.findByIdAndRemove(req.params.id, (err, foundPost)=>{
         Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
             foundAuthor.articles.id(req.params.id).remove();
