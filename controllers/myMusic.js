@@ -5,7 +5,8 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/postschema.js');
 const Author = require('../models/authors.js');
-const { setInternalBufferSize } = require('bson');
+const UserModel = require('../models/user.js')
+
 
 
 
@@ -67,14 +68,22 @@ router.get('/',  isAuth, (req, res)=>{
 //         )
 //     })
 // })
-router.get('/:id', isAuth, (req, res)=>{
-    Post.findById(req.params.id, (err, foundMusic)=>{
-        Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
+router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
+    console.log(req.body);
+    console.log(req.params.userId +"req.params");
+    console.log(req.params.postId);
+    Post.findById(req.params.postId, (err, foundMusic)=>{
+        console.log(foundMusic);
+        Author.findOne({'articles._id':req.params.postId}, (err, foundAuthor)=>{
+     UserModel.findOne({_id: req.params.userId}, (err, foundUser)=> {
+
             res.render('show.ejs', {
                 author:foundAuthor,
-                music: foundMusic
+                music: foundMusic,
+                user:foundUser
             });
         })
+    })
     });
 });
 

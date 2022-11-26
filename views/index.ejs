@@ -21,7 +21,8 @@
 
     
     <div class="container">
-       
+      welcome! 
+       <%=currentUser.username%>
        
           <h1> Home Page</h1>
         <!-- for loop for posts in post collection to show album info, links to show page -->
@@ -29,7 +30,7 @@
             
                 <% for(let i = 0; i < post.length; i++) { %>
                     <div class="col-sm-6">
-                      <a href="/mymusic/<%=post[i]._id%>">
+                      <a href="/myMusic/user/<%=currentUser._id%>/posts/<%=post[i]._id%>">"
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<%=post[i].image%>" alt="Card image cap">
                         <div class="card-body">
