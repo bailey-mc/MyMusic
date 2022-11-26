@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('../partials/head.ejs') %>
+
     <title>Document</title>
 </head>
 <body>
-    <%=user.username %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <%- include ('../partials/nav.ejs') %>
+             
+                <form class="form-inline my-2 my-lg-0" action="../../sessions/logout" method="POST">
+                  <button class="btn btn-outline-light my-2 my-sm-0">Logout</button>
+              </form>
+                
+              </div>
+            </nav>
+    <%=user.username %> edit page
+
+
+      <!-- BOOTSTRAP -->
+      <%- include ('../partials/bootstrap.ejs') %>
 </body>
 </html>

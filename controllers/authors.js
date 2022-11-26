@@ -43,6 +43,8 @@ router.get('/profile/users/:userId', isAuth, (req, res)=>{
 	
 })
 
+
+
 router.post('/', (req, res)=>{
 	req.body.articles = [{album : req.body.name}]
 	console.log(req.body);

@@ -168,6 +168,17 @@ router.get('/profile/users/:userId', isAuth, (req, res)=>{
 	
 })
 
+//edit profile
+router.get('/profile/users/:userId/edit', isAuth, (req,res)=> {
+	UserModel.findById(req.params.userId, (err, foundUser)=> {
+		console.log(foundUser);
+		res.render('users/edit.ejs', 
+			{
+				user:foundUser
+			}
+		)
+	})
+})
 
 //-------------PUT---------------//
 
