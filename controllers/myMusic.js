@@ -153,6 +153,22 @@ router.put('/user/:userId/posts/:postId/comments', (req, res)=> {
     })
 })
 
+
+//profile page
+router.get('/profile/users/:userId', isAuth, (req, res)=>{
+	UserModel.findById(req.params.userId, (err, foundUser)=> {
+		console.log(foundUser);
+        console.log(foundUser);
+		res.render('users/profile.ejs',
+		{
+			user:foundUser
+		}
+		)
+	})
+	
+})
+
+
 //-------------PUT---------------//
 
 router.put('/:id', (req, res)=>{
