@@ -47,12 +47,16 @@ router.get('/new', isAuth, (req, res)=>{
 //     })
     
 // })
-router.get('/',  isAuth, (req, res)=>{
-	Post.find({}, (err, foundPosts)=>{
-		res.render('index.ejs', {
-			post: foundPosts
-		});
-	})
+router.get('/user/:userId',  isAuth, (req, res)=>{
+    UserModel.findById(req.params.userId, (err,foundUser)=> {
+        Post.find({}, (err, foundPosts)=>{
+            res.render('index.ejs', {
+                post: foundPosts,
+                user:foundUser
+            });
+        })
+    })
+	
 });
 
 

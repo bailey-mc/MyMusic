@@ -57,7 +57,7 @@ sessions.get('/', (req, res)=> {
         Post.find({}, (err, foundPosts)=>{
             res.render('index.ejs', {
                 post: foundPosts,
-            currentUser: foundUser
+                user: foundUser
 
             });
         })
