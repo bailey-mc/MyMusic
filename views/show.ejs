@@ -18,7 +18,7 @@
     <div class="container">
        
         <h1><%=music.album%> by <%=music.artist%></h1>
-         <small>Reviewedby: <%=user.username%></small><br/>
+         <small>Reviewedby: <%=author.username%></small><br/>
         <!-- link -->
         <!-- ///updating yt link so that it is JUST the unique number, can then be put into the embed link already set up on show page... cut out everything BEFORE = and after (including) & -->
         <%if (music.link !== null) {
@@ -44,14 +44,17 @@
         <p>Review: <%=music.review%></p><br/>
         <p>Tags: <%=music.tags%></p><br/>
 
-        // edit button IF user== author
+        
+          <% if (author.id === user.id) {%>
         <button class="btn btn-light"><a href="/myMusic/<%=music._id%>/edit">edit review</a></button> <br/>
 
         <form action="/myMusic/user/<%=user._id%>/posts/<%=music._id%>?_method=DELETE" method="POST">
           <button class="btn btn-light" class="delete" type="submit">Delete Post
             </button> <br/>
-            
         </form>
+        <%}%>
+
+
 
         <section class="comments-container">
         <h4>Comments</h4>

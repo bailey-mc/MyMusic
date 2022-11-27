@@ -34,14 +34,13 @@
                 </ul>
             </section>
             
-            <section>
-                <form action="/authors/<%=author._id%>?_method=DELETE" method="post">
-                  <button type="submit" class="btn btn-light">Delete Author</button>
-                </form>
-            </section>
+          <% if (author.id === user.id) {%>
+            
             <section>
               <button type="submit" class="btn btn-light"><a href="/authors/<%=author._id%>/edit">Edit Author</a></button>
             </section>
+        <%}%>
+
         </main>
       </div>
   

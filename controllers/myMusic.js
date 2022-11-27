@@ -99,19 +99,23 @@ router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
     // console.log(req.body);
     // console.log(req.params.userId +"req.params");
     // console.log(req.params.postId);
-    Post.findById(req.params.postId, (err, foundMusic)=>{
-        console.log(foundMusic);
-        UserModel.findOne({'articles._id':req.params.postId}, (err, foundUser)=>{
-    console.log(foundUser + 'found user');
-
-            res.render('show.ejs', {
-                
-                music: foundMusic,
-                user:foundUser
-            });
-      
+    UserModel.findById(req.params.userId, (err, foundUser)=>{
+        Post.findById(req.params.postId, (err, foundMusic)=>{
+            console.log(foundMusic);
+            UserModel.findOne({'articles._id':req.params.postId}, (err, foundAuthor)=>{
+        console.log(foundAuthor + 'found author');
+    
+                res.render('show.ejs', {
+                    
+                    music: foundMusic,
+                    user:foundUser,
+                    author: foundAuthor,
+                });
+          
+        })
+        });
     })
-    });
+   
 });
 
 
