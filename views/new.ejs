@@ -17,13 +17,14 @@
       </nav>
       <div class="container">
         <h1>time to review!</h1>
-          <form action="/myMusic" method="POST">
+          <form action="/myMusic/user/<%=user.id%>" method="POST">
 
-            <select name="authorId">
+            <!-- <select name="authorId">
               <% for(let i = 0; i < authors.length; i++) { %>
                 <option value="<%=authors[i]._id%>"><%=authors[i].name%></option>
               <% } %>
-            </select><br/>
+            </select><br/> -->
+
 
 
             <div class="form-group" >

@@ -7,6 +7,7 @@ const authorSchema = new mongoose.Schema({
 	articles: [Post.schema],
 	bio: String,
 	image: String,
+	
 });
 
 const Author = mongoose.model('Author', authorSchema);

@@ -8,6 +8,8 @@ const bcrypt = require('bcrypt');
 
 const Post = require('../models/postschema.js');
 const UserModel = require('../models/user.js')
+const Author = require('../models/authors.js');
+
 
 
 
@@ -92,7 +94,10 @@ sessions.get('/', (req, res)=> {
  
      await user.save()
      //mongoose method that saves the user that has been created into the database
- 
+
+    
+     
+
      res.redirect('./login')
  })
 

@@ -28,11 +28,16 @@ const isAuth = (req, res, next) => {
 // router.get('/new', (req, res)=> {
 //     res.render('new.ejs')
 // })
-router.get('/new', isAuth, (req, res)=>{
-    Author.find({}, (err, allAuthors)=>{
-        res.render('new.ejs', {
-            authors: allAuthors
-        });
+router.get('/user/:userId/new', isAuth, (req, res)=>{
+    
+        UserModel.findById(req.params.userId, (err, foundUser)=> {
+            Author.find({}, (err, allAuthors)=>{
+            res.render('new.ejs', {
+                authors: allAuthors,
+                user: foundUser
+            });
+        })
+        
     });
 });
 
@@ -99,13 +104,25 @@ router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
 //         res.redirect('/myMusic')
 //     })
 // })
-router.post('/', (req, res)=>{
+// router.post('/', (req, res)=>{
+//     req.body.tags =req.body.tags.split(',')
+//     Author.findById(req.body.authorId, (err, foundAuthor)=>{
+//         Post.create(req.body, (err, createdPost)=>{ //req.body.authorId is ignored due to Schema
+//             foundAuthor.articles.push(createdPost);
+//             foundAuthor.save((err, data)=>{
+//                 res.redirect('/myMusic');
+//             });
+//         });
+//     });
+// });
+router.post('/user/:userId', (req, res)=>{
     req.body.tags =req.body.tags.split(',')
-    Author.findById(req.body.authorId, (err, foundAuthor)=>{
-        Post.create(req.body, (err, createdPost)=>{ //req.body.authorId is ignored due to Schema
-            foundAuthor.articles.push(createdPost);
-            foundAuthor.save((err, data)=>{
-                res.redirect('/myMusic');
+    UserModel.findById(req.params.userId, (err, foundUser)=>{
+        Post.create(req.body, (err, createdPost)=>{ //req.body.UserId is ignored due to Schema
+            foundUser.articles.push(createdPost);
+            foundUser.save((err, data)=>{
+                res.redirect('/myMusic/user/' +req.params.userId);
+                
             });
         });
     });
@@ -190,6 +207,9 @@ router.put('/profile/users/:userId', isAuth, (req, res)=> {
         )
     })
 })
+
+//to create an author out of user
+
 
 //-------------PUT---------------//
 
