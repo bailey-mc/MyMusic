@@ -25,19 +25,23 @@
         
         <div class="row">
             
-            <% for(let i = 0; i < authors.length; i++) { %>
+            <% for(let i = 0; i < users.length; i++) { %>
+              <%if (users[i].articles.length > 0){%>
+
                 <div class="col-sm-6">
                   <a href="/authors/user/<%=user._id%>/author/<%=authors[i]._id%>">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="<%=authors[i].image%>" alt="Card image cap">
+                    <img class="card-img-top" src="<%=users[i].image%>" alt="Card image cap">
                     <div class="card-body">
-                      <p class="card-text"><%=authors[i].name%> 
+                      <p class="card-text"><%=users[i].username%> 
                  </p>
                       
                     </div>
                 </div>
               </a>
                 </div>
+              <%}%>
+
             <%}%>
         
         </div>

@@ -69,12 +69,16 @@ router.post('/', (req, res)=>{
 
 router.get('/user/:userId', isAuth, (req, res)=>{
 	UserModel.findById(req.params.userId,(err, foundUser)=> {
-		Author.find({}, (err, foundAuthors)=>{
-			res.render('authors/index.ejs', {
-				authors: foundAuthors,
-				user:foundUser
-			});
+		UserModel.find({}, (err, foundUsers)=> {
+			Author.find({}, (err, foundAuthors)=>{
+				res.render('authors/index.ejs', {
+					authors: foundAuthors,
+					user:foundUser,
+					users: foundUsers
+				});
+			})
 		})
+		
 	})
 	
 });

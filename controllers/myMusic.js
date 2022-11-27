@@ -77,21 +77,39 @@ router.get('/user/:userId',  isAuth, (req, res)=>{
 //         )
 //     })
 // })
+// router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
+//     console.log(req.body);
+//     console.log(req.params.userId +"req.params");
+//     console.log(req.params.postId);
+//     Post.findById(req.params.postId, (err, foundMusic)=>{
+//         console.log(foundMusic);
+//         Author.findOne({'articles._id':req.params.postId}, (err, foundAuthor)=>{
+//      UserModel.findOne({_id: req.params.userId}, (err, foundUser)=> {
+
+//             res.render('show.ejs', {
+//                 author:foundAuthor,
+//                 music: foundMusic,
+//                 user:foundUser
+//             });
+//         })
+//     })
+//     });
+// });
 router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
-    console.log(req.body);
-    console.log(req.params.userId +"req.params");
-    console.log(req.params.postId);
+    // console.log(req.body);
+    // console.log(req.params.userId +"req.params");
+    // console.log(req.params.postId);
     Post.findById(req.params.postId, (err, foundMusic)=>{
         console.log(foundMusic);
-        Author.findOne({'articles._id':req.params.postId}, (err, foundAuthor)=>{
-     UserModel.findOne({_id: req.params.userId}, (err, foundUser)=> {
+        UserModel.findOne({'articles._id':req.params.postId}, (err, foundUser)=>{
+    console.log(foundUser + 'found user');
 
             res.render('show.ejs', {
-                author:foundAuthor,
+                
                 music: foundMusic,
                 user:foundUser
             });
-        })
+      
     })
     });
 });
@@ -117,6 +135,7 @@ router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
 // });
 router.post('/user/:userId', (req, res)=>{
     req.body.tags =req.body.tags.split(',')
+    
     UserModel.findById(req.params.userId, (err, foundUser)=>{
         Post.create(req.body, (err, createdPost)=>{ //req.body.UserId is ignored due to Schema
             foundUser.articles.push(createdPost);
