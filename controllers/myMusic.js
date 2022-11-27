@@ -180,6 +180,17 @@ router.get('/profile/users/:userId/edit', isAuth, (req,res)=> {
 	})
 })
 
+router.put('/profile/users/:userId', isAuth, (req, res)=> {
+    UserModel.findByIdAndUpdate(req.params.userId, req.body, {new:true}, (err, updatedUser)=> {
+        console.log(updatedUser);
+        res.render('users/profile.ejs', 
+            {
+                user:updatedUser
+            }
+        )
+    })
+})
+
 //-------------PUT---------------//
 
 router.put('/:id', (req, res)=>{
