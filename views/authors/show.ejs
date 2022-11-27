@@ -28,8 +28,8 @@
                 <h2>Articles:</h2>
                 
                 <ul>
-                    <% for(let i = 1; i < author.articles.length; i++){ %>
-                        <li class="authors"><a class="authors" href="/myMusic/<%=author.articles[i]._id%>"><%=author.articles[i].album%></a></li>
+                    <% for(let i = 0; i < author.articles.length; i++){ %>
+                        <li class="authors"><a class="authors" href="/myMusic/user/<%=user.id%>/posts/<%=author.articles[i]._id%>"><%=author.articles[i].album%></a></li>
                     <% } %>
                 </ul>
             </section>
