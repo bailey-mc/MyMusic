@@ -17,6 +17,8 @@ const isAuth = (req, res, next) => {
 }
 
 //-----------ROUTES------------//
+
+//probably get rid of b/c don't need to make new authors
 router.get('/users/:userId/new', isAuth, (req, res)=>{
 	UserModel.findById(req.params.userId, (err, foundUser)=> {
 		res.render('authors/new.ejs',
@@ -29,19 +31,19 @@ router.get('/users/:userId/new', isAuth, (req, res)=>{
 });
 
 
-//profile page
-router.get('/profile/users/:userId', isAuth, (req, res)=>{
-	UserModel.findById(req.params.userId, (err, foundUser)=> {
-		console.log(foundUser);
-        console.log(foundUser);
-		res.render('users/profile.ejs',
-		{
-			user:foundUser
-		}
-		)
-	})
+// //profile page
+// router.get('/profile/users/:userId', isAuth, (req, res)=>{
+// 	UserModel.findById(req.params.userId, (err, foundUser)=> {
+// 		console.log(foundUser);
+//         console.log(foundUser);
+// 		res.render('users/profile.ejs',
+// 		{
+// 			user:foundUser
+// 		}
+// 		)
+// 	})
 	
-})
+// })
 
 
 
@@ -85,7 +87,7 @@ router.get('/user/:userId', isAuth, (req, res)=>{
 
 router.get('/user/:userId/author/:authorId', isAuth, (req, res)=>{
 	UserModel.findById(req.params.userId, (err, foundUser)=>{
-		Author.findById(req.params.authorId, (err, foundAuthor)=>{
+		UserModel.findById(req.params.authorId, (err, foundAuthor)=>{
 			res.render('authors/show.ejs', {
 				author: foundAuthor,
 				user: foundUser

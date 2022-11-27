@@ -9,7 +9,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <%- include ('../partials/nav.ejs') %>
         
-          <form class="form-inline my-2 my-lg-0" action="sessions/logout" method="POST">
+          <form class="form-inline my-2 my-lg-0" action="../../sessions/logout" method="POST">
             <button class="btn btn-outline-light my-2 my-sm-0">Logout</button>
         </form>
           
@@ -29,7 +29,7 @@
               <%if (users[i].articles.length > 0){%>
 
                 <div class="col-sm-6">
-                  <a href="/authors/user/<%=user._id%>/author/<%=authors[i]._id%>">
+                  <a href="/authors/user/<%=user._id%>/author/<%=users[i].id%>">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="<%=users[i].image%>" alt="Card image cap">
                     <div class="card-body">
