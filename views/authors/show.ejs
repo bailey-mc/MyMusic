@@ -15,28 +15,38 @@
           
         </div>
     </nav>
-    <div class="container">
-      <h1><%=author.name%></h1>
-      <main>
-        <section>
-          <h4>About</h4>
-            <p><%=author.bio%></p>
-        </section>
-        <section>
-          <h2>Articles:</h2>
-            <ul>
-              <% for(let i = 0; i < author.articles.length; i++){ %>
-                <li class="authors"><a class="authors" href="/myMusic/user/<%=user.id%>/posts/<%=author.articles[i]._id%>"><%=author.articles[i].album%></a></li>
-              <% } %>
-            </ul>
-        </section>    
 
-        <% if (author.id === user.id) {%>    
+    <div class="container author">
+      <div class="author-left">
+        <h1><%=author.username%></h1>
+
+        <img class="author-image" src="<%=author.image%>">
+      </div>
+      <div class="author-right">
+
+        <main>
           <section>
-            <button type="submit" class="btn btn-light"><a href="../../../../myMusic/profile/users/<%=author.id%>/edit">Edit Author</a></button>
+            <h4>About</h4>
+              <p><%=author.bio%></p>
           </section>
-        <%}%>
-      </main>
+          <section>
+            <h4>Articles:</h4>
+              <ul>
+                <% for(let i = 0; i < author.articles.length; i++){ %>
+                  <li class="authors"><a class="authors" href="/myMusic/user/<%=user.id%>/posts/<%=author.articles[i]._id%>"><%=author.articles[i].album%></a></li>
+                <% } %>
+              </ul>
+          </section>    
+  
+          <% if (author.id === user.id) {%>    
+            <section>
+              <button type="submit" class="btn btn-light"><a href="../../../../myMusic/profile/users/<%=author.id%>/edit">Edit Author</a></button>
+            </section>
+          <%}%>
+        </main>
+      </div>
+      
+     
     </div>
   
      <!-- BOOTSTRAP -->
