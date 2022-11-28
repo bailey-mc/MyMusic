@@ -24,10 +24,7 @@ const isAuth = (req, res, next) => {
 //              ROUTES           //
 //-------------------------------//
 
-//-------------NEW---------------//
-// router.get('/new', (req, res)=> {
-//     res.render('new.ejs')
-// })
+//-------------NEW-REVIEW--------------//
 router.get('/user/:userId/new', isAuth, (req, res)=>{
     
         UserModel.findById(req.params.userId, (err, foundUser)=> {
@@ -41,17 +38,7 @@ router.get('/user/:userId/new', isAuth, (req, res)=>{
     });
 });
 
-//-------------INDEX---------------//
-// router.get('/', (req, res)=>{
-// 	Post.find({}, (err, allPosts)=> {
-//         res.render('index.ejs',
-//             {
-//                 post: allPosts
-//             }
-//         );
-//     })
-    
-// })
+//-------------INDEX-OF REVIEWS--------------//
 router.get('/user/:userId',  isAuth, (req, res)=>{
     UserModel.findById(req.params.userId, (err,foundUser)=> {
         Post.find({}, (err, foundPosts)=>{
@@ -64,41 +51,10 @@ router.get('/user/:userId',  isAuth, (req, res)=>{
 	
 });
 
+//-------------SHOW-REVIEW--------------//
 
-//-------------SHOW---------------//
-// router.get('/:id', (req,res)=> {
-//     Post.findById(req.params.id,  (err, foundMusic)=> {
-   
-//         res.render('show.ejs',
-//         {
-//             music : foundMusic,
-            
-//         }
-//         )
-//     })
-// })
-// router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
-//     console.log(req.body);
-//     console.log(req.params.userId +"req.params");
-//     console.log(req.params.postId);
-//     Post.findById(req.params.postId, (err, foundMusic)=>{
-//         console.log(foundMusic);
-//         Author.findOne({'articles._id':req.params.postId}, (err, foundAuthor)=>{
-//      UserModel.findOne({_id: req.params.userId}, (err, foundUser)=> {
 
-//             res.render('show.ejs', {
-//                 author:foundAuthor,
-//                 music: foundMusic,
-//                 user:foundUser
-//             });
-//         })
-//     })
-//     });
-// });
 router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
-    // console.log(req.body);
-    // console.log(req.params.userId +"req.params");
-    // console.log(req.params.postId);
     UserModel.findById(req.params.userId, (err, foundUser)=>{
         Post.findById(req.params.postId, (err, foundMusic)=>{
             console.log(foundMusic);
@@ -119,24 +75,9 @@ router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
 });
 
 
+//-------------POST--NEW-REVIEW-------------//
 
-//-------------POST---------------//
-// router.post('/', (req, res)=> {
-//     Post.create(req.body, (err, createdPost)=> {
-//         res.redirect('/myMusic')
-//     })
-// })
-// router.post('/', (req, res)=>{
-//     req.body.tags =req.body.tags.split(',')
-//     Author.findById(req.body.authorId, (err, foundAuthor)=>{
-//         Post.create(req.body, (err, createdPost)=>{ //req.body.authorId is ignored due to Schema
-//             foundAuthor.articles.push(createdPost);
-//             foundAuthor.save((err, data)=>{
-//                 res.redirect('/myMusic');
-//             });
-//         });
-//     });
-// });
+
 router.post('/user/:userId', (req, res)=>{
     req.body.tags =req.body.tags.split(',')
     
@@ -151,33 +92,26 @@ router.post('/user/:userId', (req, res)=>{
     });
 });
 
+//-------------EDIT--REVIEW-------------//
 
-//-------------EDIT---------------//
-// router.get('/:id/edit', (req,res)=> {
-//     Post.findById(req.params.id, (err, foundMusic)=> {
-//         res.render('edit.ejs',
-//             {
-//                 music: foundMusic
-//             }
-//         )
-//     })
-// })
-router.get('/:id/edit', isAuth, (req, res)=>{
-	Post.findById(req.params.id, (err, foundPost)=>{
-		Author.find({}, (err, allAuthors)=>{
-			Author.findOne({'articles._id':req.params.id}, (err, foundPostAuthor)=>{
+
+router.get('/user/:userId/posts/:postId/edit', isAuth, (req, res)=>{
+	Post.findById(req.params.postId, (err, foundPost)=>{
+		UserModel.findById(req.params.userId, (err, foundUser)=> {
+            UserModel.findOne({'articles._id':req.params.id}, (err, foundPostAuthor)=>{
 				res.render('edit.ejs', {
 					music: foundPost,
-					authors: allAuthors,
-					articleAuthor: foundPostAuthor
+					user: foundUser,
+					author: foundPostAuthor
 				});
-			});
+			
 		});
+        })
+			
 	});
 });
 
 
-// router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
 
 //------COMMENTS ROUTE--------//
 router.put('/user/:userId/posts/:postId/comments', (req, res)=> {
@@ -194,7 +128,8 @@ router.put('/user/:userId/posts/:postId/comments', (req, res)=> {
 })
 
 
-//profile page
+//------SHOW PROFILE PAGE ROUTE--------//
+
 router.get('/profile/users/:userId', isAuth, (req, res)=>{
 	UserModel.findById(req.params.userId, (err, foundUser)=> {
 		console.log(foundUser);
@@ -208,7 +143,8 @@ router.get('/profile/users/:userId', isAuth, (req, res)=>{
 	
 })
 
-//edit profile
+//------EDIT PROFILE PAGE ROUTE--------//
+
 router.get('/profile/users/:userId/edit', isAuth, (req,res)=> {
 	UserModel.findById(req.params.userId, (err, foundUser)=> {
 		console.log(foundUser);
@@ -219,6 +155,7 @@ router.get('/profile/users/:userId/edit', isAuth, (req,res)=> {
 		)
 	})
 })
+//------EDIT--PUT PROFILE PAGE ROUTE--------//
 
 router.put('/profile/users/:userId', isAuth, (req, res)=> {
     UserModel.findByIdAndUpdate(req.params.userId, req.body, {new:true}, (err, updatedUser)=> {
@@ -231,38 +168,49 @@ router.put('/profile/users/:userId', isAuth, (req, res)=> {
     })
 })
 
-//to create an author out of user
+//-------------PUT-REVIEW- ROUTE-------------//
 
-
-//-------------PUT---------------//
-
-router.put('/:id', (req, res)=>{
+router.put('/user/:userId/posts/:postId', (req, res)=>{
    console.log(req.body);
+   console.log(req.params);
    
    req.body.tags =req.body.tags.split(',')
+        Post.findByIdAndUpdate(req.params.postId, req.body, { new: true }, (err, updatedPost)=>{
+            
 
-    Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPost)=>{
-        Author.findOne({ 'articles._id' : req.params.id }, (err, foundAuthor)=>{
-		if(foundAuthor._id.toString() !== req.body.authorId){
-			foundAuthor.articles.id(req.params.id).remove();
-			foundAuthor.save((err, savedFoundAuthor)=>{
-				Author.findById(req.body.authorId, (err, newAuthor)=>{
-					newAuthor.articles.push(updatedPost);
-					newAuthor.save((err, savedNewAuthor)=>{
-			        	        res.redirect('/myMusic');
-					});
-				});
-			});
-		} else {
-			foundAuthor.articles.id(req.params.id).remove();
-			foundAuthor.articles.push(updatedPost);
-			foundAuthor.save((err, data)=>{
-		                res.redirect('/myMusic');
-			});
-		}
+            UserModel.findOne({ 'articles._id' : req.params.postId }, (err, foundAuthor)=>{
+console.log(foundAuthor);
+            // if(foundAuthor._id.toString() !== req.body.authorId){
+            //     foundAuthor.articles.id(req.params.id).remove();
+            //     foundAuthor.save((err, savedFoundAuthor)=>{
+            //         Author.findById(req.body.authorId, (err, newAuthor)=>{
+            //             newAuthor.articles.push(updatedPost);
+            //             newAuthor.save((err, savedNewAuthor)=>{
+            //                         res.redirect('/myMusic/user/:userId');
+            //             });
+            //         });
+            //     });
+            // } else {
+                foundAuthor.articles.id(req.params.postId).remove();
+
+/////need t keep the author info!!!! otherwise all author info removed when u delete
+
+                foundAuthor.articles.push(updatedPost);
+                foundAuthor.save((err, data)=>{
+    UserModel.findById(req.params.userId, (err, foundUser)=> {
+
+                            res.redirect('/myMusic/user/'+req.params.userId,
+                            // {
+                            //     user: foundUser
+                            // }
+                            );
+                });
+            })
+            });
         });
-    });
-});
+    })
+    
+
 
 //-------------search---------------//
 router.post('/search', (req, res)=> {
@@ -303,11 +251,7 @@ router.post('/search', (req, res)=> {
 })
 
 //-------------DELETE---------------//
-// router.delete('/:id', (req, res)=> {
-//     Post.findByIdAndRemove(req.params.id, (err, deletedMusic)=> {
-//         res.redirect('/myMusic')
-//     })
-// })
+
 router.delete('/user/:userId/posts/:postId', (req, res)=>{
     Post.findByIdAndRemove(req.params.id, (err, foundPost)=>{
         Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
@@ -333,4 +277,90 @@ router.delete('/user/:userId/posts/:postId', (req, res)=>{
 module.exports = router
 
 
+//-------------------------------//
+//             GRAVEYARD         //
+//-------------------------------//
 
+//-------------NEW POST---------------//
+// router.get('/new', (req, res)=> {
+//     res.render('new.ejs')
+// })
+
+//-------------INDEX POSTS---------------//
+// router.get('/', (req, res)=>{
+// 	Post.find({}, (err, allPosts)=> {
+//         res.render('index.ejs',
+//             {
+//                 post: allPosts
+//             }
+//         );
+//     })
+    
+// })
+
+//-------------SHOW-POST--------------//
+// router.get('/:id', (req,res)=> {
+//     Post.findById(req.params.id,  (err, foundMusic)=> {
+   
+//         res.render('show.ejs',
+//         {
+//             music : foundMusic,
+            
+//         }
+//         )
+//     })
+// })
+// router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
+//     console.log(req.body);
+//     console.log(req.params.userId +"req.params");
+//     console.log(req.params.postId);
+//     Post.findById(req.params.postId, (err, foundMusic)=>{
+//         console.log(foundMusic);
+//         Author.findOne({'articles._id':req.params.postId}, (err, foundAuthor)=>{
+//      UserModel.findOne({_id: req.params.userId}, (err, foundUser)=> {
+
+//             res.render('show.ejs', {
+//                 author:foundAuthor,
+//                 music: foundMusic,
+//                 user:foundUser
+//             });
+//         })
+//     })
+//     });
+// });
+
+//-------------POST--NEW-REVIEW-------------//
+// router.post('/', (req, res)=> {
+//     Post.create(req.body, (err, createdPost)=> {
+//         res.redirect('/myMusic')
+//     })
+// })
+// router.post('/', (req, res)=>{
+//     req.body.tags =req.body.tags.split(',')
+//     Author.findById(req.body.authorId, (err, foundAuthor)=>{
+//         Post.create(req.body, (err, createdPost)=>{ //req.body.authorId is ignored due to Schema
+//             foundAuthor.articles.push(createdPost);
+//             foundAuthor.save((err, data)=>{
+//                 res.redirect('/myMusic');
+//             });
+//         });
+//     });
+// });
+
+//-------------EDIT--REVIEW-------------//
+// router.get('/:id/edit', (req,res)=> {
+//     Post.findById(req.params.id, (err, foundMusic)=> {
+//         res.render('edit.ejs',
+//             {
+//                 music: foundMusic
+//             }
+//         )
+//     })
+// })
+
+//-------------DELETE---------------//
+// router.delete('/:id', (req, res)=> {
+//     Post.findByIdAndRemove(req.params.id, (err, deletedMusic)=> {
+//         res.redirect('/myMusic')
+//     })
+// })

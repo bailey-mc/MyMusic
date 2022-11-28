@@ -18,21 +18,9 @@
 
       <div class="container">
         <%=music.album%>
-        <form action="/myMusic/<%=music._id%>%>?_method=PUT" method="POST">
+        <form action="/myMusic/user/<%=user.id%>/posts/<%=music.id%>?_method=PUT" method="POST">
 
-          <div class="form-group" >
-            <select name="authorId">
-              <% for(let i = 0; i < authors.length; i++) { %>
-                  <option class="form-control"
-                      value="<%=authors[i]._id%>"
-                      <% if(authors[i]._id.toString() === articleAuthor._id.toString()){ %>
-                          selected
-                      <% } %>
-                      >
-                      <%=authors[i].name%>
-                  </option>
-              <% } %>
-          </div>
+        
 
           
 

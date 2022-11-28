@@ -46,7 +46,7 @@
 
         
           <% if (author.id === user.id) {%>
-        <button class="btn btn-light"><a href="/myMusic/<%=music._id%>/edit">edit review</a></button> <br/>
+        <button class="btn btn-light"><a href="/myMusic/user/<%=user.id%>/posts/<%=music._id%>/edit">edit review</a></button> <br/>
 
         <form action="/myMusic/user/<%=user._id%>/posts/<%=music._id%>?_method=DELETE" method="POST">
           <button class="btn btn-light" class="delete" type="submit">Delete Post
