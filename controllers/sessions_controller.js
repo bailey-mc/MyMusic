@@ -25,14 +25,18 @@ const isAuth = (req, res, next) => {
 
 
 //-----------ROUTES------------//
+
+//---------ENTER SITE-----------//
 sessions.get('/', (req, res)=> {
         res.render('landing',);
  })
  
+ //-----------LOGIN PAGE-----------//
  sessions.get('/login', (req, res)=> {
      res.render('login.ejs')
  })
  
+ //-----------LOGIN-POST--------------//
  sessions.post('/login', async (req, res)=> {
      const {username, password} = req.body; 
      console.log(req.body);
@@ -94,9 +98,6 @@ sessions.get('/', (req, res)=> {
  
      await user.save()
      //mongoose method that saves the user that has been created into the database
-
-    
-     
 
      res.redirect('./login')
  })
