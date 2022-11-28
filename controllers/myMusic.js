@@ -9,8 +9,7 @@ const UserModel = require('../models/user.js')
 
 
 
-
-//prevent pplp who ar not logged in from getting to restricted pages
+//prevent ppl who are not logged in from getting to restricted pages
 const isAuth = (req, res, next) => {
     if (req.session.isAuth) {
         next()
@@ -189,40 +188,42 @@ router.put('/user/:userId/posts/:postId', (req, res)=>{
 
 
 //-------------search---------------//
-router.post('/search', (req, res)=> {
+router.post('/search/user/:userId', (req, res)=> {
     console.log(req.body.searchTerm);
     x =req.body.searchTerm;
     console.log(x);
     Post.find(
         {$or: [
-        {
-            artist: 
-            {$regex:x, $options:'i'}
-            // {$regex:/x/i, }          
-        },
-        {
-            album:
-            // {$regex:/x/i, }          
-
-            {$regex:x, $options:'i'}
-        },
-        {
-            tags: 
-            {$regex:x, $options:'i'} 
-            // {$regex:/x/i, }          
-
-                       
-        },
-
-    ]
-        
-    }, 
-    (err, foundPosts)=> {
-        res.render('search.ejs',
             {
-                post: foundPosts
+                artist: {$regex:x, $options:'i'}
+            },
+            {
+                album: {$regex:x, $options:'i'}
+            },
+            {
+                tags: {$regex:x, $options:'i'}            
             }
+            ]   
+        }, 
+    (err, foundPosts)=> {
+    UserModel.find(
+        {
+            username: {$regex:x, $options:'i'} 
+        },
+        (err, foundAuthors)=>{
+            UserModel.findById(req.params.userId, (err, foundUser)=> {
+                res.render('search.ejs',
+                {
+                    post: foundPosts,
+                    author: foundAuthors,
+                    user: foundUser
+                }
+            )
+        }
         )
+   
+    })
+       
     })
 })
 
@@ -230,7 +231,7 @@ router.post('/search', (req, res)=> {
 
 router.delete('/user/:userId/posts/:postId', (req, res)=>{
     Post.findByIdAndRemove(req.params.id, (err, foundPost)=>{
-        Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
+        UserModel.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
             foundAuthor.articles.id(req.params.id).remove();
             foundAuthor.save((err, data)=>{
                 res.redirect('/myMusic');

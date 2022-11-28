@@ -12,61 +12,43 @@
           <form class="form-inline my-2 my-lg-0" action="../../../../sessions/logout" method="POST">
             <button class="btn btn-outline-light my-2 my-sm-0">Logout</button>
         </form>
-          
-        </div>
-      </nav>
+      </div>
+    </nav>
     <div class="container">
-       
-        <h1><%=music.album%> by <%=music.artist%></h1>
-         <small>Reviewed by: <a href="../../../../../authors/user/<%=user.id%>/author/<%=author.id%>"><%=author.username%></a></small><br/>
+      <h1><%=music.album%> by <%=music.artist%></h1>
+        <small>Reviewed by: <a href="../../../../../authors/user/<%=user.id%>/author/<%=author.id%>"><%=author.username%></a></small><br/>
         <!-- link -->
         <!-- ///updating yt link so that it is JUST the unique number, can then be put into the embed link already set up on show page... cut out everything BEFORE = and after (including) & -->
-        <%if (music.link !== null) {
+      <%if (music.link !== null) {
         //Removes & and everything following
+        let link =music.link.split('&')[0]
+        //Removes = and everythiing before // tutorial from https://thispointer.com/javascript-string-remove-until-a-character/
+        link = link.substring(link.indexOf('=') + 1) %>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=link%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <% } else { %>
+        <p>Broken link</p>
+      <%}%>
 
-            let link =music.link.split('&')[0]
-                //Removes = and everythiing before // tutorial from https://thispointer.com/javascript-string-remove-until-a-character/
-                link = link.substring(link.indexOf('=') + 1) %>
-                <iframe width="560" height="315" 
-
-        src="https://www.youtube.com/embed/<%=link%>" 
-      
-
-        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-       
-         <% } else { %>
-            <p>Broken link</p>
-          <%}%>
-
-
-        
         <p>Rating: <%=music.rating%></p><br/>
         <p>Review: <%=music.review%></p><br/>
         <p>Tags: <%=music.tags%></p><br/>
 
-        
-          <% if (author.id === user.id) {%>
-        <button class="btn btn-light"><a href="/myMusic/user/<%=user.id%>/posts/<%=music._id%>/edit">Edit Review</a></button> 
-
-        <form action="/myMusic/user/<%=user._id%>/posts/<%=music._id%>?_method=DELETE" method="POST">
-          <button class="btn btn-light" class="delete" type="submit">Delete Post
+        <% if (author.id === user.id) {%>
+          <button class="btn btn-light"><a href="/myMusic/user/<%=user.id%>/posts/<%=music._id%>/edit">Edit Review</a></button> 
+          <form action="/myMusic/user/<%=user._id%>/posts/<%=music._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-light" class="delete" type="submit">Delete Post
             </button> <br/>
-        </form>
+          </form>
         <%}%>
-
-
 
         <section class="comments-container">
         <h4>Comments</h4>
-          
         <%if (music.comments.length > 0) {%>
           <% for (let i = 0; i < music.comments.length; i++) {%>
-        <div class="comments">
-
+            <div class="comments">
             <h6>User <%=music.comments[i].user%> commented:</h6>
             <p><%=music.comments[i].comment%></p>
-          </div>
-
+            </div>
           <%}%>
         <%}else {%>
           <p>Be the first to comment!</p>
@@ -75,18 +57,18 @@
         <div class="form-group">
           <form action="/myMusic/user/<%=user._id%>/posts/<%=music._id%>/comments?_method=PUT" method="POST">
             <div class="form-group">
-                <label for="FormControlInput2">Name</label>
-                <input type="text" class="form-control" id="FormControlInput2" value="<%=user.username%>" name="user" >
-              </div>
-              <div class="form-group">
-                <label for="FormControlInput2">Comment</label>
-                <input type="text" class="form-control" id="FormControlInput2" placeholder="comment" name="comment" >
-              </div>
-              <button class="btn btn-light" type="submit">submit</button>
-            </form>
-          </div>
+              <label for="FormControlInput2">Name</label>
+              <input type="text" class="form-control" id="FormControlInput2" value="<%=user.username%>" name="user" >
+            </div>
+            <div class="form-group">
+              <label for="FormControlInput2">Comment</label>
+              <input type="text" class="form-control" id="FormControlInput2" placeholder="comment" name="comment" >
+            </div>
+            <button class="btn btn-light" type="submit">submit</button>
+          </form>
+        </div>
         
-          </section>
+       </section>
     </div>
 
     <!-- BOOTSTRAP -->

@@ -6,7 +6,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-      <%- include ('../partials/nav.ejs') %>
+      <%- include ('partials/nav.ejs') %>
 
           <form class="form-inline my-2 my-lg-0" action="../sessions/logout" method="POST">
             <button class="btn btn-outline-light my-2 my-sm-0">Logout</button>
@@ -17,20 +17,30 @@
     <div class="container">
         <div class="row">
             <% for(let i = 0; i < post.length; i++) { %>
-                <div class="col-sm-6">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<%=post[i].image%>" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text"><a href="/mymusic/<%=post[i]._id%>"><%=post[i].album%> by <%=post[i].artist%></a>
-                      </p>
-                      
-                    </div>
+              <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="<%=post[i].image%>" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text"><a href="/mymusic/<%=post[i]._id%>"><%=post[i].album%> by <%=post[i].artist%></a>
+                    </p>
                   </div>
                 </div>
-                
-        
+              </div>
+            <%}%>
+
+            <% for(let i = 0; i < author.length; i++) { %>
+              <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="<%=author[i].image%>" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text"><a href="/authors/user/<%=user.id%>/author/<%=author[i]._id%>"><%=author[i].username%></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
             <%}%>
         </div>
+        
         
 
        
