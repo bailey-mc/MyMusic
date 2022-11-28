@@ -15,11 +15,17 @@
                 
               </div>
             </nav>
-    welcome <%=user.username%>
-
-            <a href="/myMusic/profile/users/<%=user.id%>/edit">Edit profile</a>
-
-            <%=user.bio%>
+            <h1>welcome <%=user.username%></h1> 
+            <a href="/myMusic/profile/users/<%=user.id%>/edit">Edit profile</a> <br/>
+            <div class="container">
+                <img src="<%=user.image%>" style="max-height: 400px;" >
+                <h5 >About</h5>
+                <%=user.bio%>
+                <h5>Favorite Genres</h5>
+                <p><%=user.genres%></p>
+            </div>
+            
+            
 
         
 
