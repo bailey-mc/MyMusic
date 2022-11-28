@@ -171,41 +171,17 @@ router.put('/profile/users/:userId', isAuth, (req, res)=> {
 //-------------PUT-REVIEW- ROUTE-------------//
 
 router.put('/user/:userId/posts/:postId', (req, res)=>{
-   console.log(req.body);
-   console.log(req.params);
-   
    req.body.tags =req.body.tags.split(',')
         Post.findByIdAndUpdate(req.params.postId, req.body, { new: true }, (err, updatedPost)=>{
-            
-
             UserModel.findOne({ 'articles._id' : req.params.postId }, (err, foundAuthor)=>{
-console.log(foundAuthor);
-            // if(foundAuthor._id.toString() !== req.body.authorId){
-            //     foundAuthor.articles.id(req.params.id).remove();
-            //     foundAuthor.save((err, savedFoundAuthor)=>{
-            //         Author.findById(req.body.authorId, (err, newAuthor)=>{
-            //             newAuthor.articles.push(updatedPost);
-            //             newAuthor.save((err, savedNewAuthor)=>{
-            //                         res.redirect('/myMusic/user/:userId');
-            //             });
-            //         });
-            //     });
-            // } else {
                 foundAuthor.articles.id(req.params.postId).remove();
-
-/////need t keep the author info!!!! otherwise all author info removed when u delete
-
                 foundAuthor.articles.push(updatedPost);
                 foundAuthor.save((err, data)=>{
-    UserModel.findById(req.params.userId, (err, foundUser)=> {
-
-                            res.redirect('/myMusic/user/'+req.params.userId,
-                            // {
-                            //     user: foundUser
-                            // }
-                            );
-                });
-            })
+                    UserModel.findById(req.params.userId, (err, foundUser)=> {
+                        //bc it's redirect, you don'y have to specify user again
+                        res.redirect('/myMusic/user/'+req.params.userId);
+                    });
+                })
             });
         });
     })
