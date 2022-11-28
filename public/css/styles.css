@@ -1,4 +1,8 @@
 
+html {
+   
+  height: 100vh;
+}
 body {
   background: linear-gradient(rgb(93, 78, 231), #c2b8e7) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -18,33 +22,17 @@ body {
 .bg-light {
     background-color: rgb(255 255 255 / 51%)!important;
 }
-/* .btn-outline-success {
-    color: #a728a3;
-    background-color: transparent;
-    background-image: none;
-    border-color: #9a28a7;
-} */
-
-html{
-   
-    height: 100vh;
-  }
-  body.landing{
-    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-    box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-    background-image:
-    linear-gradient(
-      rgb(243, 137, 92), #e7b8b8
-    );
-  }
-  .cover-container {
-    max-width: 42em;
-  }
+body.landing{
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  background-image:
+  linear-gradient(rgb(243, 137, 92), #e7b8b8);
+}
+.cover-container {
+  max-width: 42em;
+}
   
-  
-  /*
-   * Header
-   */
+  /* NAV BAR */
   
   .nav-masthead .nav-link {
     color: rgba(255, 255, 255, .5);
@@ -64,8 +52,10 @@ html{
     color: #fff;
     border-bottom-color: #fff;
   }
- .white-a {
-    color: black
+
+  /* -------END NAV BAR--------- */
+ a {
+  color: black;
  }
  .login-page {
     background-image:
@@ -73,10 +63,6 @@ html{
       rgb(243, 137, 92), #e7b8b8
     );
  }
- .new-page {
-    background-image: none;
- }
-
  .authors{
   list-style-type: none;
   color:black;
@@ -97,6 +83,8 @@ html{
   border-top: 1px solid black;
 
  }
+
+ /* --------AUTHOR DISPLAY PAGE ---------- */
  img.author-image {
   max-width: 20rem;
   height: auto;

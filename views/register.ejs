@@ -8,12 +8,18 @@
 <body class="register-page">
     <div class="container">
         <h1>Register</h1>
+        
         <form action="/sessions/register" method="POST">
             <div class="form-group">
               <label for="inputUsername">Username</label>
               <input type="text"  name="username" class="form-control" id="inputUsername" style="max-width: 40%;"  placeholder="Enter username">
              
             </div>
+            <%if (error.length >0) {%>
+              <div class="alert alert-danger" role="alert" style="max-width: 40%;" >
+              Username is not available, please try again
+              </div>
+            <%}%>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
               <input type="text" name="password" class="form-control" id="exampleInputPassword1" style="max-width: 40%;"placeholder="Password">
