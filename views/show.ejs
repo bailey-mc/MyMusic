@@ -18,7 +18,7 @@
     <div class="container">
        
         <h1><%=music.album%> by <%=music.artist%></h1>
-         <small>Reviewedby: <%=author.username%></small><br/>
+         <small>Reviewed by: <a href="../../../../../authors/user/<%=user.id%>/author/<%=author.id%>"><%=author.username%></a></small><br/>
         <!-- link -->
         <!-- ///updating yt link so that it is JUST the unique number, can then be put into the embed link already set up on show page... cut out everything BEFORE = and after (including) & -->
         <%if (music.link !== null) {
@@ -46,7 +46,7 @@
 
         
           <% if (author.id === user.id) {%>
-        <button class="btn btn-light"><a href="/myMusic/user/<%=user.id%>/posts/<%=music._id%>/edit">edit review</a></button> <br/>
+        <button class="btn btn-light"><a href="/myMusic/user/<%=user.id%>/posts/<%=music._id%>/edit">Edit Review</a></button> 
 
         <form action="/myMusic/user/<%=user._id%>/posts/<%=music._id%>?_method=DELETE" method="POST">
           <button class="btn btn-light" class="delete" type="submit">Delete Post
@@ -82,7 +82,7 @@
                 <label for="FormControlInput2">Comment</label>
                 <input type="text" class="form-control" id="FormControlInput2" placeholder="comment" name="comment" >
               </div>
-              <button type="submit">submit</button>
+              <button class="btn btn-light" type="submit">submit</button>
             </form>
           </div>
         
