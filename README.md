@@ -1,5 +1,5 @@
 # myMusic Full Stack Web App
-Rate your music who? this year you'll be wanting to go to myMusic to review your favorite albums. This is a basic CRUD app that allows users to create a personal profile, review albums, read other user's reviews, and look at other user's profiles.
+Rate your music who? this year you'll be wanting to go to myMusic to review your favorite albums. This is a basic CRUD app that allows users to create a personal profile, review albums, read other user's reviews, and look at other user's profiles. There is a small amount of on site interaction thru comments. Users can also reach out to eachother thru emails that they post on their profile.
 
 ## Technologies used
 HTML, CSS, JavaScript, Express, EJS, and MongoDB. Bootstrap was used for styling. Dependencies are bcrypt, connect-mongodb-session, ejs, express, express-session, method-override, mongodb, and mongoose. 
@@ -49,13 +49,14 @@ https://mysterious-ridge-06952.herokuapp.com/
 - Comments would link to user profiles
     - Ability to comment in threads
 - Ability to upload images instead of just links 
-- Ability to delete account
-- More stringent guidelines on password strength
+- Password must include one special character
 - Ability to like posts
 - Ability to follow certain authors
- - Your home page feed would be their posts, and the nav bar would have a link to a page that is all posts sorted by most recent
+    - Your home page feed would be their posts, and the nav bar would have a link to a page that is all posts sorted by most recent
 - More specific search & fuzzy search
 
 ## What I learned
 - Youtube tutorials are incredibly helpful forms of documentation
 - Don't try to troubleshoot on your own-- LOOK UP ANSWERS
+- You can make something that works and then when you're almost done realize that your route was very circuitous and there are much more direct ways to do what you did.
+- Bootstrap is a great tool.

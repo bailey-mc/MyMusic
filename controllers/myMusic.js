@@ -142,7 +142,7 @@ router.put('/user/:userId/posts/:postId/comments', (req, res)=> {
    
 })
 
-
+///PROFILE PAGe//
 //------SHOW PROFILE PAGE ROUTE--------//
 
 router.get('/profile/users/:userId', isAuth, (req, res)=>{
@@ -182,6 +182,8 @@ router.put('/profile/users/:userId', isAuth, (req, res)=> {
         )
     })
 })
+
+
 
 //-------------PUT-REVIEW- ROUTE-------------//
 
@@ -243,7 +245,7 @@ router.post('/search/user/:userId', (req, res)=> {
     })
 })
 
-//-------------DELETE---------------//
+//-------------DELETE-POST--------------//
 
 router.delete('/user/:userId/posts/:postId', (req, res)=>{
     Post.findByIdAndRemove(req.params.id, (err, foundPost)=>{

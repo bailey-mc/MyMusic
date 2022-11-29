@@ -110,6 +110,7 @@ sessions.get('/', (req, res)=> {
      const {username, password} = req.body
      console.log(req.body);
     
+     
      let errors = []
      let passErrors = []
      let passMatchError = []

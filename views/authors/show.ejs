@@ -41,10 +41,21 @@
               </ul>
           </section>    
   
+          <!-- edit profile if you are logged in as the author -->
           <% if (author.id === user.id) {%>    
             <section>
               <button type="submit" class="btn btn-light"><a href="../../../../myMusic/profile/users/<%=author.id%>/edit">Edit Author</a></button>
             </section>
+          <%}%>
+
+          <!-- EXPERIMENT -->
+            <!-- follow the author if you are not logged in as the author -->
+          <!-- <% if (author.id !== user.id) {%>    
+            <form action="/authors/user/<%=user.id%>/author/<%=author.id%>" method="POST">
+              <input class="btn btn-light" type="checkbox" name="following">Follow Author</input>
+              <button type="submit" class="btn btn-light">Submit</button>
+            </form> -->
+            
           <%}%>
         </main>
       </div>

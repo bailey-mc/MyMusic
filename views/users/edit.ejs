@@ -15,9 +15,10 @@
                 
               </div>
             </nav>
-    <%=user.username %> edit page
 
     <div class="container">
+    <%=user.username %> edit page
+
         <%=user.username%>
         <form action="/myMusic/profile/users/<%=user._id%>%>?_method=PUT" method="POST">
 
@@ -45,13 +46,7 @@
                 </div>
               </div>
             
-       
-         
-         
-            
               <button type="submit" class="btn btn-primary">Edit Profile</button>
-
-    
         </form>
       </div>
 

@@ -14,7 +14,7 @@ const isAuth = (req, res, next) => {
 
 //-----------ROUTES------------//
 
-
+//-----------AUTHORS HOME------------//
 router.get('/user/:userId', isAuth, (req, res)=>{
 	UserModel.findById(req.params.userId,(err, foundUser)=> {
 		UserModel.find({}, (err, foundUsers)=> {
@@ -30,6 +30,9 @@ router.get('/user/:userId', isAuth, (req, res)=>{
 	})
 	
 });
+
+
+//-----------Author Show Page------------//
 
 router.get('/user/:userId/author/:authorId', isAuth, (req, res)=>{
 	UserModel.findById(req.params.userId, (err, foundUser)=>{
@@ -123,3 +126,48 @@ module.exports = router;
 // 		);
 // 	});
 // });
+
+
+
+//----------------------------------//
+//		FOLLOW EXPERIMENT
+//----------------------------------//
+
+//-----------Author POST FOLLOW ROUTE------------//
+// router.post('/user/:userId/author/:authorId', isAuth, (req, res)=>{
+// 	UserModel.findById(req.params.authorId, (err, foundAuthor)=> {
+// 		UserModel.findById(req.params.userId, (err, foundUser)=> {
+// 			foundUser.following.push(foundAuthor.username)
+// 			foundUser.save((err, data)=> {
+// 				res.redirect('/mymusic')
+// 			})
+// 		})
+// 	})
+// })
+
+// //----------feed page------------//
+// router.get('/followfeed/user/:userId', (req, res)=> {
+// 	let articles= []
+// 	UserModel.findById(req.params.userId, (err, foundUser)=> {
+// 		console.log(foundUser);
+// 		for (let i=0; i< foundUser.following.length; i++) {
+// 			UserModel.find({username: foundUser.following[i]}, (err, foundAuthor)=> {
+// 				console.log(foundAuthor + 'found uthor');
+// 				console.log(foundAuthor.username);
+// 				for (let i=0; i< foundAuthor.articles.length; i++) {
+
+// 				articles.push(foundAuthor.articles[i])
+// 				console.log(articles);
+// 		}
+// 			})
+// 		}
+// 		res.render('followfeed.ejs',
+// 			{
+// 				user: foundUser,
+// 				articles: articles
+// 			}
+// 		)
+// 	})
+	
+// })
+

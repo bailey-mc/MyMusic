@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     image: String,
     bio: String,
     genres: String,
-    email: String
+    email: String,
+    // following:[]
     // friends: String,
 })
 
