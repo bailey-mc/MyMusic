@@ -1,1 +1,1 @@
-myMusic coming to an app store near you
+# myMusic Web App

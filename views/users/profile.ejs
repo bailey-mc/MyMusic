@@ -15,9 +15,10 @@
                 
               </div>
             </nav>
-            <h1>welcome <%=user.username%></h1> 
-            <a href="/myMusic/profile/users/<%=user.id%>/edit">Edit profile</a> <br/>
+            
             <div class="container">
+                <h1>welcome <%=user.username%></h1> 
+            <a href="/myMusic/profile/users/<%=user.id%>/edit">Edit profile</a> <br/>
                 <img src="<%=user.image%>" style="max-height: 400px;" >
                 <h5 >About</h5>
                 <%=user.bio%> <br/>

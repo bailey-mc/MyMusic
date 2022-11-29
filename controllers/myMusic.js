@@ -134,7 +134,7 @@ router.put('/user/:userId/posts/:postId/comments', (req, res)=> {
             updatedMusic.comments.push({user: foundUser.username, comment: req.body.comment})
             updatedMusic.save((err, savedUpdatedMusic)=> {
                 console.log(savedUpdatedMusic);
-            res.redirect('/myMusic/user/'+req.params.userId+'/posts/'+req.params.postId)
+            res.redirect('/myMusic/user/'+req.params.userId+'/posts/'+req.params.postId,)
             })
            
         })
