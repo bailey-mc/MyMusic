@@ -59,6 +59,7 @@ https://mysterious-ridge-06952.herokuapp.com/
 ## What I learned
 - Youtube tutorials are incredibly helpful forms of documentation
 - Don't try to troubleshoot on your own-- LOOK UP ANSWERS
-- You can make something that works and then when you're almost done realize that your route was very circuitous and there are much more direct ways to do what you did.
+- Bcrypt encryption
+- How middleware actually works
 - Bootstrap is a great tool.
 - If something seems weird with the database, go look thru the database. I learned that MongoDB adds unique indexes to specific fields for reasons I don't quite understand... but now I now to go look for and delete them.
