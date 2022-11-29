@@ -1,8 +1,9 @@
 # myMusic Full Stack Web App
-Rate your music who? this year you'll be wanting to go to myMusic to review your favorite albums. 
+Rate your music who? this year you'll be wanting to go to myMusic to review your favorite albums. This is a basic CRUD app that allows users to create a personal profile, review albums, read other user's reviews, and look at other user's profiles.
 
 ## Technologies used
-HTML, CSS, JavaScript, Node.js, EJS, MongoDB, and Bootstrap
+HTML, CSS, JavaScript, Express, EJS, and MongoDB. Bootstrap was used for styling. Dependencies are bcrypt, connect-mongodb-session, ejs, express, express-session, method-override, mongodb, and mongoose. 
+You may see assert, connect-flash, and multer in package.json, but those dependencies are not being used in the app as it is today.
 
 ## Heroku Link
 https://mysterious-ridge-06952.herokuapp.com/
