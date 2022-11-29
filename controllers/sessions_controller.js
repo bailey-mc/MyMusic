@@ -98,7 +98,8 @@ sessions.get('/', (req, res)=> {
  sessions.get('/register', (req, res)=> {
      res.render('register.ejs',
         {
-            error:[]
+            error:[],
+            passError:[]
         }
      )
  })
@@ -109,6 +110,7 @@ sessions.get('/', (req, res)=> {
      console.log(req.body);
     
      let errors = []
+     let passErrors = []
 
      //to make sure two accounts don't register with the same username
      let user = await UserModel.findOne({username})
@@ -118,7 +120,15 @@ sessions.get('/', (req, res)=> {
         errors.push({message: 'This username is not avilable, please choose another'})
         res.render('register', 
         {
-            error: errors
+            error: errors,
+            passError: []
+        })
+    }else if (password.length < 8){
+        passErrors.push({message: 'Password must be at least 8 characters long'})
+        res.render('register', 
+        {
+            passError: passErrors,
+            error:[]
         })
      } else {
      const hashedPsw = await bcrypt.hash(password, 12)

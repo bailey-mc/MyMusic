@@ -24,6 +24,11 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="text" name="password" class="form-control" id="exampleInputPassword1" style="max-width: 500px;"placeholder="Password">
             </div>
+            <%if (passError.length >0) {%>
+              <div class="alert alert-danger" role="alert" style="max-width: 500px;" >
+                Password must be at least 8 characters long
+              </div>
+            <%}%>
            
            
             <button  class="btn btn-light" href="/sessions/login">Register</button>
