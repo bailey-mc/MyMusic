@@ -45,6 +45,7 @@ https://mysterious-ridge-06952.herokuapp.com/
 - Users can't review albums with the same name
 - Textareas don't auto-populate with previous text
 - Logout button glitches on home page immediately after login 
+- If a user changes their username, that doesn't update in their comments
 
 ## What I would add with more time
 - Comments would link to user profiles
