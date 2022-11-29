@@ -3,7 +3,7 @@
 //-------------------------------//
 const express = require('express');
 const router = express.Router();
-const multer = require('multer')
+// const multer = require('multer')
 const Post = require('../models/postschema.js');
 const UserModel = require('../models/user.js')
 
@@ -19,15 +19,15 @@ const isAuth = (req, res, next) => {
 }
 
 //multer middleware
-const fileStorageEngine = multer.diskStorage({destination:(req, file, cb)=> {
-    cb(null, '../images')
-  },
-  filename: (req, file, cb)=> {
-    cb(null, Date.now() + '--' +file.originalname)
-  }
-})
+// const fileStorageEngine = multer.diskStorage({destination:(req, file, cb)=> {
+//     cb(null, '../images')
+//   },
+//   filename: (req, file, cb)=> {
+//     cb(null, Date.now() + '--' +file.originalname)
+//   }
+// })
 
-const upload = multer({storage: fileStorageEngine})
+// const upload = multer({storage: fileStorageEngine})
 
 
 //-------------------------------//
