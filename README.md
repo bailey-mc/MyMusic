@@ -39,3 +39,22 @@ https://mysterious-ridge-06952.herokuapp.com/
 - As an author, I want to have my profile page readily available to readers, so that if they like my content they can peruse everything else I’ve written
 - As an author, I want to be able to edit my page, but I don’t want anyone else to have that capability.
 
+
+## Bugs
+- Users can't review albums with the same name
+- Textareas don't auto-populate with previous text
+- Logout button glitches on home page immediately after login 
+## What I would add with more time
+- Comments would link to user profiles
+    - Ability to comment in threads
+- Ability to upload images instead of just links 
+- Ability to delete account
+- More stringent guidelines on password strength
+- Ability to like posts
+- Ability to follow certain authors
+ - Your home page feed would be their posts, and the nav bar would have a link to a page that is all posts sorted by most recent
+- More specific search & fuzzy search
+
+## What I learned
+- Youtube tutorials are incredibly helpful forms of documentation
+- Don't try to troubleshoot on your own-- LOOK UP ANSWERS
