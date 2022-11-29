@@ -128,15 +128,18 @@ router.get('/user/:userId/posts/:postId/edit', isAuth, (req, res)=>{
 //------COMMENTS ROUTE--------//
 router.put('/user/:userId/posts/:postId/comments', (req, res)=> {
     console.log(req.body);
-    Post.findByIdAndUpdate(req.params.postId, req.body, {new:true}, (err, updatedMusic)=> {
-        console.log(updatedMusic);
-        updatedMusic.comments.push({user: req.body.user, comment: req.body.comment})
-        updatedMusic.save((err, savedUpdatedMusic)=> {
-            console.log(savedUpdatedMusic);
-        res.redirect('/myMusic/user/'+req.params.userId+'/posts/'+req.params.postId)
+    UserModel.findById(req.params.userId, (err, foundUser)=>{
+        Post.findByIdAndUpdate(req.params.postId, req.body, {new:true}, (err, updatedMusic)=> {
+            console.log(updatedMusic);
+            updatedMusic.comments.push({user: foundUser.username, comment: req.body.comment})
+            updatedMusic.save((err, savedUpdatedMusic)=> {
+                console.log(savedUpdatedMusic);
+            res.redirect('/myMusic/user/'+req.params.userId+'/posts/'+req.params.postId)
+            })
+           
         })
-       
     })
+   
 })
 
 
