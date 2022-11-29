@@ -6,28 +6,28 @@
     <title>Login</title>
 </head>
 <body class="login-page">
-    <div class="container">
+    <div class="container ">
         <h1>Login Page</h1>
         <form action="/sessions/login" method="POST">
             <div class="form-group">
               <label for="inputUsername">Username</label>
-              <input type="text"  name="username" class="form-control" id="inputUsername" style="max-width: 40%;"  
+              <input type="text"  name="username" class="form-control" id="inputUsername" style="max-width: 500px;"  
               placeholder="
              
               Enter username
               
               ">
               <%if (userError.length >0) {%>
-                <div class="alert alert-danger" role="alert" style="max-width: 40%;" >
+                <div class="alert alert-danger" role="alert" style="max-width: 500px;" >
                   This username does not exist. Did you type it in correctly?
                 </div>
               <%}%>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="text" name="password" class="form-control" id="exampleInputPassword1" style="max-width: 40%;" placeholder="Password">
+              <input type="text" name="password" class="form-control" id="exampleInputPassword1" style="max-width: 500px;" placeholder="Password">
               <%if (passError.length >0) {%>
-                <div class="alert alert-danger" role="alert" style="max-width: 40%;" >
+                <div class="alert alert-danger" role="alert" style="max-width: 500px;" >
                   This password does not match the username. Did you type it in correctly?
                 </div>
               <%}%>

@@ -57,12 +57,13 @@ body.landing{
  a {
   color: black;
  }
- .login-page {
+ .login-page, .register-page {
     background-image:
     linear-gradient(
       rgb(243, 137, 92), #e7b8b8
     );
  }
+
  .authors{
   list-style-type: none;
   color:black;
