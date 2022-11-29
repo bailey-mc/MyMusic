@@ -99,7 +99,8 @@ sessions.get('/', (req, res)=> {
      res.render('register.ejs',
         {
             error:[],
-            passError:[]
+            passError:[],
+            passMatchError:[]
         }
      )
  })
@@ -111,6 +112,7 @@ sessions.get('/', (req, res)=> {
     
      let errors = []
      let passErrors = []
+     let passMatchError = []
 
      //to make sure two accounts don't register with the same username
      let user = await UserModel.findOne({username})
@@ -121,23 +123,33 @@ sessions.get('/', (req, res)=> {
         res.render('register', 
         {
             error: errors,
-            passError: []
+            passError: [],
+            passMatchError: []
         })
     }else if (password.length < 8){
         passErrors.push({message: 'Password must be at least 8 characters long'})
         res.render('register', 
         {
             passError: passErrors,
-            error:[]
+            error:[],
+            passMatchError:[],
+        })
+    }else if (password !== req.body.passwordMatch){
+        passMatchError.push({message: 'Passwords must match'})
+        res.render('register', 
+        {
+            passError: [],
+            error:[],
+            passMatchError:passMatchError,
         })
      } else {
      const hashedPsw = await bcrypt.hash(password, 12)
  
      user = new UserModel({
          username, 
-         password: hashedPsw
+         password: hashedPsw, 
      })
- 
+     console.log(user);
      await user.save()
      //mongoose method that saves the user that has been created into the database
 
