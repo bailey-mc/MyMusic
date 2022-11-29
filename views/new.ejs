@@ -19,11 +19,7 @@
         <h1>time to review!</h1>
           <form action="/myMusic/user/<%=user.id%>" method="POST">
 
-            <!-- <select name="authorId">
-              <% for(let i = 0; i < authors.length; i++) { %>
-                <option value="<%=authors[i]._id%>"><%=authors[i].name%></option>
-              <% } %>
-            </select><br/> -->
+          
 
 
 
@@ -35,10 +31,19 @@
                 <label for="FormControlInput2">Artist</label>
                 <input type="text" class="form-control" id="FormControlInput2" placeholder="artist name" name="artist" >
               </div>
+
+
             <div class="form-group">
                 <label for="FormControlInput3">Album Cover</label>
                 <input type="text" class="form-control" id="FormControlInput3" name="image"  placeholder="Link to image address">
                 </div>
+
+  <!-- <div class="form-group">
+    <label for="exampleFormControlFile1">Album Cover</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+  </div> -->
+
+
             <div class="form-group">
                 <label for="FormControlInput4">Youtube Link</label>
                 <input type="text" class="form-control" id="FormControlInput4" name="link"  placeholder="youtube.com/alex_g">

@@ -28,6 +28,9 @@
           <section>
             <h4>About</h4>
               <p><%=author.bio%></p>
+              <% if (author.email) {%>
+                You can reach me at <%=author.email%>
+                <%} %>
           </section>
           <section>
             <h4>Articles:</h4>

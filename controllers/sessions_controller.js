@@ -4,21 +4,15 @@
 const express = require('express');
 const sessions = express.Router();
 const bcrypt = require('bcrypt');
-// const flash = require('connect-flash');
-
-
-// app.use(flash())
 
 const Post = require('../models/postschema.js');
 const UserModel = require('../models/user.js')
-const Author = require('../models/authors.js');
-const { application } = require('express');
 
 
 
 
 
-//prevent pplp who ar not logged in from getting to restricted pages
+//prevent ppl who are not logged in from getting to restricted pages
 const isAuth = (req, res, next) => {
     if (req.session.isAuth) {
         next()
@@ -171,3 +165,5 @@ sessions.use((req,res, next)=> {
  //         Citations          //
  //-----------------------------//
  //major major help from the full stack junkie on youtube, this video in particular: https://www.youtube.com/watch?v=TDe7DRYK8vU&ab_channel=TheFullStackJunkie
+
+ //alert system taken from notes at https://www.section.io/engineering-education/connect-flash-express-sessions-and-boostrap/

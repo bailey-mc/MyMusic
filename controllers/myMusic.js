@@ -3,6 +3,7 @@
 //-------------------------------//
 const express = require('express');
 const router = express.Router();
+const multer = require('multer')
 const Post = require('../models/postschema.js');
 const Author = require('../models/authors.js');
 const UserModel = require('../models/user.js')
@@ -18,20 +19,31 @@ const isAuth = (req, res, next) => {
     }
 }
 
+//multer middleware
+const fileStorageEngine = multer.diskStorage({destination:(req, file, cb)=> {
+    cb(null, '../images')
+  },
+  filename: (req, file, cb)=> {
+    cb(null, Date.now() + '--' +file.originalname)
+  }
+})
+
+const upload = multer({storage: fileStorageEngine})
+
 
 //-------------------------------//
 //              ROUTES           //
 //-------------------------------//
 
 //-------------NEW-REVIEW--------------//
-router.get('/user/:userId/new', isAuth, (req, res)=>{
+router.get('/user/:userId/new', isAuth,  (req, res)=>{
     
         UserModel.findById(req.params.userId, (err, foundUser)=> {
-            Author.find({}, (err, allAuthors)=>{
+            // Author.find({}, (err, allAuthors)=>{
             res.render('new.ejs', {
-                authors: allAuthors,
+                // authors: allAuthors,
                 user: foundUser
-            });
+            // });
         })
         
     });
@@ -77,7 +89,7 @@ router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
 //-------------POST--NEW-REVIEW-------------//
 
 
-router.post('/user/:userId', (req, res)=>{
+router.post('/user/:userId',  (req, res)=>{
     req.body.tags =req.body.tags.split(',')
     
     UserModel.findById(req.params.userId, (err, foundUser)=>{

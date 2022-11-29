@@ -60,6 +60,7 @@ app.use(express.json());
 // static //public files
 app.use(express.static('public'));
 
+
 //-----------------------------//
 //        CONTROLLERS    //
 //-----------------------------//

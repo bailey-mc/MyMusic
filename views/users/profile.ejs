@@ -20,7 +20,10 @@
             <div class="container">
                 <img src="<%=user.image%>" style="max-height: 400px;" >
                 <h5 >About</h5>
-                <%=user.bio%>
+                <%=user.bio%> <br/>
+                <% if (user.email) {%>
+                You can reach me at <%=user.email%>
+                <%}%>
                 <h5>Favorite Genres</h5>
                 <p><%=user.genres%></p>
             </div>
