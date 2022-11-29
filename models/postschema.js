@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 //              SCHEMA           //
 //---------------------------------//
 const postSchema =  mongoose.Schema({
-    album: {type:String, required:true },
+    album: String,
     artist: String,
     image: String,
     link: String,

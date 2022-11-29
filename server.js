@@ -10,10 +10,6 @@ const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 const methodOverride = require('method-override');
-// const PostSeed = require('./models/postseed.js');  //for seed
-const Post = require('./models/postschema.js') //  for seed
-
-
 
 
 
@@ -72,16 +68,6 @@ const authorsController = require('./controllers/authors.js');
 app.use('/authors', authorsController);
 
 
-
-
-
-//seed
-// app.get('/myMusic/seed', (req, res)=> {
-//     Post.create(PostSeed, (err, data)=> {
-//         res.send(PostSeed)
-//     }
-//     )
-// })
 
 //for heroku deployment
 app.get('/', (req, res)=>{

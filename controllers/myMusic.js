@@ -5,7 +5,6 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer')
 const Post = require('../models/postschema.js');
-const Author = require('../models/authors.js');
 const UserModel = require('../models/user.js')
 
 
@@ -90,10 +89,12 @@ router.get('/user/:userId/posts/:postId', isAuth, (req, res)=>{
 
 
 router.post('/user/:userId',  (req, res)=>{
+    console.log(req.body);
     req.body.tags =req.body.tags.split(',')
     
     UserModel.findById(req.params.userId, (err, foundUser)=>{
         Post.create(req.body, (err, createdPost)=>{ //req.body.UserId is ignored due to Schema
+            console.log(createdPost);
             foundUser.articles.push(createdPost);
             foundUser.save((err, data)=>{
                 res.redirect('/myMusic/user/' +req.params.userId);

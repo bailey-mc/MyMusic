@@ -24,7 +24,7 @@
       <h1> Home Page</h1>
         <!-- for loop for posts in post collection to show album info, links to show page -->
         <div class="row">
-          <% for(let i = 0; i < post.length; i++) { %>
+          <% for(let i = post.length - 1; i >= 0; i--) { %>
             <div class="col-sm-6">
               <a href="/myMusic/user/<%=user._id%>/posts/<%=post[i]._id%>">
                 <div class="card" style="width: 18rem;">
