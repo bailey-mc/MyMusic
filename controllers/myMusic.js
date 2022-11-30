@@ -248,11 +248,12 @@ router.post('/search/user/:userId', (req, res)=> {
 //-------------DELETE-POST--------------//
 
 router.delete('/user/:userId/posts/:postId', (req, res)=>{
-    Post.findByIdAndRemove(req.params.id, (err, foundPost)=>{
-        UserModel.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
-            foundAuthor.articles.id(req.params.id).remove();
+    Post.findByIdAndRemove(req.params.postId, (err, foundPost)=>{
+        UserModel.findOne({'articles._id':req.params.postId}, (err, foundAuthor)=>{
+            console.log(foundAuthor);
+            foundAuthor.articles.id(req.params.postId).remove();
             foundAuthor.save((err, data)=>{
-                res.redirect('/myMusic');
+                res.redirect('/myMusic/user/' + req.params.userId);
             });
         });
     });
